@@ -1,0 +1,12 @@
+{
+  "title": "Fn计算",
+  "namespace": "mybricks.core-comlib.fn",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "Fn计算",
+  "icon": "./icon.png",
+  "runtime": "./Fn.tsx",
+  "rtType": "js",
+  "visibility": false
+}

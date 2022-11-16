@@ -1,0 +1,10 @@
+{
+  "visibility": false,
+  "title": "输出",
+  "namespace": "mybricks.core-comlib.frame-output",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "Frame输出",
+  "rtType": "js"
+}

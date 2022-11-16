@@ -1,0 +1,41 @@
+{
+  "title": "连接器",
+  "namespace": "mybricks.core-comlib.connector",
+  "author": "MyBricks",
+  "author_name": "MyBricks",
+  "version": "1.0.0",
+  "description": "连接器",
+  "runtime": "./runtime.ts",
+  "editors": "./editors.tsx",
+  "icon": "./icon.svg",
+  "rtType": "js-autorun",
+  "inputs": [
+    {
+      "id": "call",
+      "rels": [
+        "then",
+        "catch"
+      ],
+      "title": "调用",
+      "schema": {
+        "type": "object"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "id": "then",
+      "title": "结果",
+      "schema": {
+        "type": "unknown"
+      }
+    },
+    {
+      "id": "catch",
+      "title": "发生错误",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ]
+}
