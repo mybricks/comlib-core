@@ -13,17 +13,17 @@ import moduleEdt from './module/editors'
 import fnDef from './fn/com.json'
 import Fn from './fn/Fn'
 
-import varDef from './var/com.json'
-import Var from './var/Var'
-import varEditors from './var/editors'
+import varDef from './_var/com.json'
+import Var from './_var/Var'
+import varEditors from './_var/editors'
 
-import typeChangeDef from './type-change/com.json'
-import typeChangeRt from './type-change/rt'
-import typeChangeEditors from './type-change/editors'
+import typeChangeDef from './_type-change/com.json'
+import typeChangeRt from './_type-change/rt'
+import typeChangeEditors from './_type-change/editors'
 
-import connectorDef from './connector/com.json'
-import connectorRt from './connector/runtime'
-import connectorEditors from './connector/editors'
+import connectorDef from './_connector/com.json'
+import connectorRt from './_connector/runtime'
+import connectorEditors from './_connector/editors'
 
 
 import frameOutputDef from './frame-output/com.json'
