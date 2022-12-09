@@ -1,8 +1,8 @@
 {
   "name": "@mybricks/comlib-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "MyBricks核心组件库",
-  "main": "./dist/index.js",
+  "main": "index.js",
   "author": "CheMingjun",
   "license": "ISC",
   "dependencies": {
