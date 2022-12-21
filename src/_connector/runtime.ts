@@ -1,7 +1,7 @@
 function callCon({env, data, outputs, onError}, params = {}) {
   if (data.connector) {
     try {
-      env.callConnector(data.connector, params).then(val => {
+      env.callConnector(data.connector, params, data.connectorConfig).then(val => {
         outputs['then'](val)
       }).catch(err => {
         outputs['catch'](err)

@@ -2,6 +2,7 @@ const defaultSchema = {type: 'any'};
 
 export default {
   '@init': ({data, setDesc, setAutoRun, isAutoRun}) => {
+    data.connectorConfig = data.connectorConfig || {};
     const autoRun = isAutoRun ? isAutoRun() : false;
     if (autoRun || data.immediate) {
       setAutoRun(true);
