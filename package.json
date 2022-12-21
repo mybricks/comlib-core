@@ -1,6 +1,6 @@
 {
   "name": "@mybricks/comlib-core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "MyBricks核心组件库",
   "main": "index.js",
   "author": "CheMingjun",
@@ -15,7 +15,6 @@
   "devDependencies": {
     "@types/jest": "^25.1.1",
     "@types/node": "^12.7.0",
-
     "webpack": "^4.42.0",
     "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.3.11"
