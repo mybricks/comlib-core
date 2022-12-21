@@ -6,7 +6,8 @@
   "author": "CheMingjun",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.13.1"
+    "react": "^16.13.1",
+    "styled-components": "^5.3.6"
   },
   "scripts": {
     "test": "jest",

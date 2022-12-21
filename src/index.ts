@@ -25,6 +25,11 @@ import connectorDef from './_connector/com.json'
 import connectorRt from './_connector/runtime'
 import connectorEditors from './_connector/editors'
 
+import layoutDef from './layout/com.json'
+import layoutRt from './layout/runtime'
+import layoutData from './layout/data.json'
+import layoutEditors from './layout/editors'
+
 
 import frameOutputDef from './frame-output/com.json'
 
@@ -33,7 +38,7 @@ import frameOutputDef from './frame-output/com.json'
 
 const lib = {
   id: 'mybricks-core-comlib',
-  title: 'Mybrics核心组件库',
+  title: '基础组件库',
   author: 'CheMingjun',
   icon: '',
   version: '1.0.1',
@@ -61,6 +66,12 @@ const lib = {
       comDef: connectorDef,
       rt: connectorRt,
       editors: connectorEditors
+    }),
+    merge({
+      comDef: layoutDef,
+      data: layoutData,
+      rt: layoutRt,
+      editors: layoutEditors
     }),
     // merge({
     //   comDef: frameOutputDef

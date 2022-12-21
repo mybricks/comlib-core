@@ -1,0 +1,18 @@
+{
+  "title": "布局",
+  "namespace": "mybricks.core-comlib.layout",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "布局",
+  "icon": "./icon.png",
+  "data": "./data.json",
+  "runtime": "./runtime.tsx",
+  "editors": "./editors.tsx",
+  "slots": [
+    {
+      "id": "td0",
+      "title": "单元格"
+    }
+  ]
+}
