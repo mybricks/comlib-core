@@ -37,15 +37,5 @@
         "type": "string"
       }
     }
-  ],
-  "configs": [
-    {
-      "id": "setUrl",
-      "title": "设置请求路径",
-      "schema": {
-        "type": "string"
-      },
-      "binding": "data.connectorConfig.url"
-    }
   ]
 }

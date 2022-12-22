@@ -61,6 +61,30 @@ export default {
         }
       }
     },
+    {
+      title: '配置服务地址',
+      type: 'switch',
+      value: {
+        get({data, configs}) {
+          const cfg = configs.get('url')
+          return cfg !== void 0;
+        },
+        set({data, configs, setDesc}, set) {
+          if (set) {
+            configs.add({
+              id: 'url',
+              title: '服务地址',
+              schema: {
+                type: 'string'
+              },
+              binding: `data.connectorConfig.url`
+            })
+          } else {
+            configs.get('url').remove()
+          }
+        }
+      }
+    },
   ]
 }
 
