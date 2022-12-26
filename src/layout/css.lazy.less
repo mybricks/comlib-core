@@ -2,216 +2,29 @@
   position: relative;
   //outline: 1px dashed #DDD;
   overflow: visible;
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  height:100%;
 
-  > table {
-    width: 100%;
+  .row {
+    display: flex;
+    flex-direction: row;
 
-    .thead {
-      height: 0;
+    .col {
+
     }
 
-    > tbody {
-      //display: flex;
-      //flex-direction: column;
-      //outline: 1px dashed #DDD;
-    }
-
-    tr {
-      //display: flex;
-      width: 100%;
-
-      &:not(:first-child) {
-        > td {
-          > div[data-isslot] {
-            //top: -1px !important;
-            //height: calc(100% + 0px) !important;
-          }
-        }
-      }
-
-      &:last-child {
-        > td {
-          > div[data-isslot] {
-            //height: calc(100% + 2px) !important;
-          }
-        }
-      }
-
-      //&:nth-child(2) {
-      //  //background-color: red;
-      //  //margin-left: -1px;
-      //  > td {
-      //    > div[data-isslot] {
-      //      top: -1px !important;
-      //      height: calc(100% + 0px) !important;
-      //    }
-      //  }
-      //}
-
-      //&:not(:nth-of-type(-n+1)) {
-      //  //margin-left: -1px;
-      //  > td {
-      //    > div[data-isslot] {
-      //      top: 1px !important;
-      //      height: calc(100% + 0px) !important;
-      //    }
-      //  }
-      //}
-
-      //&:last-child {
-      //  //margin-left: -1px;
-      //  > td {
-      //    > div[data-isslot] {
-      //      top: 1px !important;
-      //      height: calc(100% + -1px) !important;
-      //    }
-      //  }
-      //}
-
-      //&:nth-of-type(1) {
-      //  > td {
-      //    > div[data-isslot] {
-      //      height: calc(100% + 2px) !important;
-      //    }
-      //  }
-      //}
-      //
-      //&:not(:nth-of-type(-n+2)) {
-      //  > td {
-      //    > div[data-isslot] {
-      //      height: calc(100% + 1px) !important;
-      //    }
-      //  }
-      //}
-    }
-
-    .td {
-      position: relative;
-      //border: 1px dashed red;
-      border-collapse: collapse;
-      padding: 0;
-      overflow: hidden;
-
+    > .col {
       &:last-child {
         flex: 1;
       }
-
-      &:first-child {
-        > div[data-isslot] {
-          //left: -1px;
-          //width: calc(100% + 1px);
-        }
-      }
-
-      &:not(:first-child) {
-        //margin-left: -1px;
-
-        > div[data-isslot] {
-          //left: -2px;
-          //width: calc(100% + 2px);
-        }
-      }
-
-      > div[data-isslot] {
-        outline-offset: 0;
-        position: absolute !important;
-        left: 0px;
-        top: 0px;
-        //width: calc(100% - 1px);
-        //height: calc(100% + 0px) !important;
-      }
-
-
-      .resizeW {
-        width: 7px;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        right: -3px;
-        background-color: transparent;
-        z-index: 10000;
-        cursor: ew-resize !important;
-
-        //&:hover {
-        //  //background-color: black;
-        //
-        //  div {
-        //    visibility: visible;
-        //  }
-        //}
-
-        div {
-          pointer-events: none;
-          height: 100%;
-          width: 3px;
-          margin-left: 1px;
-          //background-color: red;
-          visibility: hidden;
-        }
-
-
-      }
     }
   }
 
-  .showCol {
-    position: absolute !important;
-    top: 0;
-    height: 100%;
-    z-index: 10000;
-    border: 1px solid red;
-    pointer-events: none !important;
-  }
-
-  > [data-edit-col] {
-    display: none;
+  > .row {
+    &:last-child {
+      flex: 1;
+    }
   }
 }
-
-//.tipCols, .tipRows {
-//  position: absolute;
-//  left: 0;
-//
-//  div {
-//    position: absolute;
-//    width: 7px;
-//    height: 7px;
-//    border-radius: 7px;
-//    background-color: #AAA;
-//    pointer-events: auto !important;
-//
-//    &:hover {
-//      background-color: #FF0000;
-//      transform: scale(2);
-//      transition: all 200ms linear;
-//    }
-//  }
-//}
-//
-//.tipCols {
-//  width: 100%;
-//  height: 20px;
-//  position: absolute;
-//  top: -12px;
-//  left: 0;
-//
-//  div {
-//    &:last-child {
-//      right: -3px;
-//    }
-//  }
-//}
-//
-//.tipRows {
-//  height: 100%;
-//  width: 20px;
-//  position: absolute;
-//  top: 0;
-//  left: -12px;
-//
-//  div {
-//    &:last-child {
-//      bottom: -3px;
-//    }
-//  }
-//}

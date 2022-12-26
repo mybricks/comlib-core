@@ -1,5 +1,3 @@
-import {dragable, getPosition} from "@mybricks/rxui";
-
 /**
  * MyBricks Opensource
  * https://mybricks.world
@@ -16,6 +14,36 @@ export function uuid(pre: string = 'u_', len = 6) {
   }
   return pre + rtn;
 }
+
+export function getPosition(ele, relativeDom?) {
+  // if(!ele) debugger
+  const scrollBarTop = document.body.scrollTop || document.documentElement.scrollTop;
+  const scrollBarLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
+//console.log(scrollBarTop)
+
+  //scrollBarLeft = scrollBarTop = 0
+
+  if (relativeDom) {
+    const currPo = ele.getBoundingClientRect()
+    const targetPo = relativeDom.getBoundingClientRect()
+
+    return {
+      x: currPo.left - targetPo.left + scrollBarLeft,
+      y: currPo.top - targetPo.top + scrollBarTop,
+      w: ele.offsetWidth,
+      h: ele.offsetHeight
+    }
+  } else {
+    const po = ele.getBoundingClientRect()
+    return {
+      x: po.left + scrollBarLeft,
+      y: po.top + scrollBarTop,
+      w: ele.offsetWidth,
+      h: ele.offsetHeight
+    }
+  }
+}
+
 
 export function dragable(e, dragingFn, options?) {
   const doc = options?.document || document

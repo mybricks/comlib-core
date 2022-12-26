@@ -27,9 +27,10 @@ import connectorEditors from './_connector/editors'
 
 import layoutDef from './layout/com.json'
 import layoutRt from './layout/runtime'
+import layoutRtEdt from './layout/edit/runtime'
 import layoutData from './layout/data.json'
-import layoutEditors from './layout/editors'
-
+import layoutEditors from './layout/edit/editors'
+import {Logo} from './layout/Icons'
 
 import frameOutputDef from './frame-output/com.json'
 
@@ -52,11 +53,11 @@ const lib = {
       rt: Var,
       editors: varEditors
     }),
-    merge({
-      comDef: moduleDef,
-      rt: moduleRT,
-      editors: moduleEdt
-    }),
+    // merge({
+    //   comDef: moduleDef,
+    //   rt: moduleRT,
+    //   editors: moduleEdt
+    // }),
     merge({
       comDef: typeChangeDef,
       rt: typeChangeRt,
@@ -69,8 +70,10 @@ const lib = {
     }),
     merge({
       comDef: layoutDef,
+      icon: Logo,
       data: layoutData,
       rt: layoutRt,
+      rtEdit: layoutRtEdt,
       editors: layoutEditors
     }),
     // merge({
@@ -97,7 +100,7 @@ const lib = {
     // merge(dialogOutputs)
   ],
   //visible: true,
-  visible: false
+  //visible: false//TODO
 }
 
 export default lib
@@ -106,9 +109,19 @@ export function getCom(namespace: string) {
   return lib.comAray.find(com => com.namespace === namespace)
 }
 
-function merge({comDef, rt, data, editors, assistence}: { comDef, rt?, data?, editors?, assistence? }) {
+function merge({
+                 comDef,
+                 icon,
+                 rt,
+                 rtEdit,
+                 data,
+                 editors,
+                 assistence
+               }: { comDef, icon?, rt?, data?, editors?, assistence? }) {
   return Object.assign(comDef, {
     runtime: rt,
+    icon: icon,
+    runtimeEdit: rtEdit,
     data,
     editors,
     assistence
