@@ -2,79 +2,15 @@ import React, {Fragment, useCallback} from "react";
 import {uuid} from "../../util";
 import {resetLayout} from "./edtUtils";
 
-const themeColorPrimary = '#FA6400'
-
-const styleColTips = {
-  width: '100%',
-  position: 'absolute',
-  left: 0,
-  top: -5
-}
-
-const styleRowTips = {
-  height: '100%',
-  position: 'absolute',
-  left: 0,
-  left: -5
-}
-
-const styleTip = {
-  position: 'absolute',
-  width: 7,
-  height: 7,
-  borderRadius: 7,
-  backgroundColor: '#CCC',
-  pointerEvents: 'auto'
-}
-
-const styleCol = {
-  position: 'absolute',
-  height: 7,
-  backgroundColor: '#CCC',
-  pointerEvents: 'auto'
-}
-
-const styleRow = {
-  position: 'absolute',
-  width: 7,
-  backgroundColor: '#CCC',
-  pointerEvents: 'auto'
-}
-
-const evtsTip = {
-  onMouseOver: e => {
-    e.target.style.transform = `scale(1.5)`
-    //e.target.style.transition = `all 100ms linear`
-    e.target.style.backgroundColor = themeColorPrimary
-  },
-  onMouseLeave: e => {
-    e.target.style.transform = `scale(1)`
-    e.target.style.transition = `all 100ms linear`
-    e.target.style.backgroundColor = '#CCC'
-  }
-}
-
-function evtsBar(ignore?) {
-  return {
-    onMouseOver: e => {
-      e.target.style.backgroundColor = themeColorPrimary
-    },
-    onMouseLeave: ignore ? null : e => {
-      //e.target.style.transition = `all 100ms linear`
-      e.target.style.backgroundColor = '#CCC'
-    }
-  }
-}
-
-//----------------------------------------------------------------
+import css from './editTips.less'
 
 export function Tips({data, style, slots, element}) {
   return [(
-    <div key={'topCols'} style={styleColTips}>
+    <div key={'topCols'} className={css.colTips}>
       <ColTips data={data} slots={slots} element={element} style={style}/>
     </div>
   ), (
-    <div key={'topRows'} style={styleRowTips}>
+    <div key={'topRows'} className={css.rowTips}>
       <RowTips data={data} slots={slots} element={element} style={style}/>
     </div>
   )]
@@ -119,36 +55,31 @@ function RowTips({data, slots, style, element}) {
 
     rowTips.push(
       <div key={`${row.id}-tip`}
-           style={Object.assign({left: -10, top: curTop - 3}, styleTip)}
-           onClick={e => addRow(e, row)}
-           {...evtsTip}/>
+           className={css.tip}
+           style={{left: -10, top: curTop - 3}}
+           onClick={e => addRow(e, row)}/>
     )
 
     if (idx === data.rows.length - 1) {//last col
       rowTips.push(
         <div key={`${row.id}-bar`}
-             style={Object.assign({
-                 top: curTop,
-                 height: isStyleHeightIsNumber ? style.height - curTop : void 0,
-                 bottom: isStyleHeightIsNumber ? void 0 : 0
-               },
-               styleRow,
-               focusNow ? {
-                 backgroundColor: themeColorPrimary
-               } : null)}
-             onClick={e => editRow(e, row)}
-             {...evtsBar(focusNow)}/>
+             className={`${css.rowBar} ${focusNow ? css.focusBar : ''} ${!row.height ? css.flexBar : ''}`}
+             style={{
+               top: curTop,
+               height: isStyleHeightIsNumber ? style.height - curTop : void 0,
+               bottom: isStyleHeightIsNumber ? void 0 : 0
+             }}
+             onClick={e => editRow(e, row)}/>
       )
     } else {
       rowTips.push(
         <div key={`${row.id}-bar`}
-             style={Object.assign({top: curTop, height: row.height},
-               styleRow,
-               focusNow ? {
-                 backgroundColor: themeColorPrimary
-               } : null)}
-             onClick={e => editRow(e, row)}
-             {...evtsBar(focusNow)}/>
+             className={`${css.rowBar} ${focusNow ? css.focusBar : ''} ${!row.height ? css.flexBar : ''}`}
+             style={{
+               top: curTop,
+               height: row.height
+             }}
+             onClick={e => editRow(e, row)}/>
       )
     }
 
@@ -156,13 +87,14 @@ function RowTips({data, slots, style, element}) {
   })
 
   rowTips.push(
-    <div key={'last'} style={Object.assign({
-      left: -10,
-      top: isStyleHeightIsNumber ? style.height - 3 : void 0,
-      bottom: isStyleHeightIsNumber ? void 0 : -3
-    }, styleTip)}
-         onClick={e => addRow(e)}
-         {...evtsTip}/>
+    <div key={'last'}
+         className={css.tip}
+         style={{
+           left: -10,
+           top: isStyleHeightIsNumber ? style.height - 3 : void 0,
+           bottom: isStyleHeightIsNumber ? void 0 : -3
+         }}
+         onClick={e => addRow(e)}/>
   )
 
   return rowTips
@@ -210,36 +142,32 @@ function ColTips({data, slots, style, element}) {
 
     colTips.push(
       <div key={`${col.id}-tip`}
-           style={Object.assign({top: -10, left: curLeft - 3}, styleTip)}
-           onClick={e => addCol(e, col)}
-           {...evtsTip}/>
+           className={css.tip}
+           style={{top: -10, left: curLeft - 3}}
+           onClick={e => addCol(e, col)}/>
     )
 
     if (idx === data.cols.length - 1) {//last col
       colTips.push(
         <div key={`${col.id}-bar`}
-             style={Object.assign({
-                 left: curLeft,
-                 width: isStyleWidthIsNumber ? style.width - curLeft : void 0,
-                 right: isStyleWidthIsNumber ? void 0 : 0
-               },
-               styleCol,
-               focusNow ? {
-                 backgroundColor: themeColorPrimary
-               } : null)}
-             onClick={e => editCol(e, col)}
-             {...evtsBar(focusNow)}/>
+             className={`${css.colBar} ${focusNow ? css.focusBar : ''} ${!col.width ? css.flexBar : ''}`}
+             style={{
+               left: curLeft,
+               width: isStyleWidthIsNumber ? style.width - curLeft : void 0,
+               right: isStyleWidthIsNumber ? void 0 : 0
+             }}
+             onClick={e => editCol(e, col)}/>
       )
     } else {
       colTips.push(
         <div key={`${col.id}-bar`}
-             style={Object.assign({left: curLeft, width: col.width},
-               styleCol,
-               focusNow ? {
-                 backgroundColor: themeColorPrimary
-               } : null)}
-             onClick={e => editCol(e, col)}
-             {...evtsBar(focusNow)}/>
+             className={`${css.colBar} ${focusNow ? css.focusBar : ''} ${!col.width ? css.flexBar : ''}`}
+             style={
+               {
+                 left: curLeft, width: col.width
+               }
+             }
+             onClick={e => editCol(e, col)}/>
       )
     }
 
@@ -247,13 +175,14 @@ function ColTips({data, slots, style, element}) {
   })
 
   colTips.push(
-    <div key={'last'} style={Object.assign({
-      top: -10,
-      left: isStyleWidthIsNumber ? style.width - 3 : void 0,
-      right: isStyleWidthIsNumber ? void 0 : -3
-    }, styleTip)}
-         onClick={e => addCol(e)}
-         {...evtsTip}/>
+    <div key={'last'}
+         className={css.tip}
+         style={{
+           top: -10,
+           left: isStyleWidthIsNumber ? style.width - 3 : void 0,
+           right: isStyleWidthIsNumber ? void 0 : -3
+         }}
+         onClick={e => addCol(e)}/>
   )
 
   return colTips
@@ -290,8 +219,7 @@ function _addCol(col, {data, slots, style, element}) {
     })
   } else {//last one
     const lastColDef = data.cols[data.cols.length - 1]
-    const lastWidth = element.querySelector(`#col-${lastColDef.id}`).offsetWidth
-    lastColDef.width = lastWidth
+    lastColDef.width = element.querySelector(`#col-${lastColDef.id}`).offsetWidth
 
     newCol = {
       id: uuid()
@@ -353,8 +281,7 @@ function _addRow(row, {data, slots, style, element}) {
     data.rows.splice(idx, -1, newRow)
   } else {//last one
     const lastRow = data.rows[data.rows.length - 1]
-    const lastHeight = element.querySelector(`#row-${lastRow.id}`).offsetHeight
-    lastRow.height = lastHeight
+    lastRow.height = element.querySelector(`#row-${lastRow.id}`).offsetHeight
 
     data.rows.push(newRow)
   }

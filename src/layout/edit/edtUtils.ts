@@ -15,21 +15,22 @@ export function resetLayout({data}) {
     }
   })
 
+  let mergeCol
   data.cols = data.cols.filter((col, idx) => {
     if (data.rows.find(row => {
       return row.cols.find(tcol => tcol.defId === col.id)
     })) {
+      mergeCol = col
       return col
     } else {//没有定义
-      const preCol = data.cols[idx - 1]
+      //const preCol = data.cols[idx - 1]
       if (col.width) {
-        preCol.width += col.width//合并宽度
+        mergeCol.width += col.width//合并宽度
       }
 
       data.rows.forEach(row => {
         row.cols.forEach(tcol => {
-          if (tcol.defId === preCol.id) {
-
+          if (tcol.defId === mergeCol.id) {
             tcol.colSpan -= 1//合并colspan
           }
         })

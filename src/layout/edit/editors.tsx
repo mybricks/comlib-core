@@ -345,8 +345,8 @@ export default {
                 row.forEach(colId => {
                   if (colId !== targetId) {
                     let found
-                    data.rows.find(row => {
-                      return row.cols.find((col, idx) => {
+                    data.rows.forEach(row => {
+                      row.cols = row.cols.filter((col, idx) => {
                         if (col.id === colId) {
                           if (rix === 0) {
                             allColSpan += (col.colSpan || 1)
@@ -358,9 +358,8 @@ export default {
                           startSlot.cutInto(coms)//将其子组件剪切到
 
                           slot.remove()
-
-                          row.cols.splice(idx, 1)
-                          return true
+                        } else {
+                          return col
                         }
                       })
                     })

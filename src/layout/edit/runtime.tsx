@@ -208,20 +208,32 @@ function Row({env, data, slots, style, row, dragTd}) {
 
     let width = defCol.width || style.width
     let editFinish
+    let allValidWidth = 0
 
     dragable(e, ({po, eo, dpo}, state) => {
       if (state === 'start') {
         editFinish = env.edit.focusPaasive()//打开组件，阻止focus样式绘制
+
+        if (!defCol.width) {
+          data.cols.forEach(def => {
+            if (def.width) {
+              allValidWidth += def.width
+            }
+          })
+        }
       } else if (state === 'ing') {
         width += dpo.dx
 
-        if (width > 5) {
-          if (defCol.width) {
+        if (defCol.width) {
+          if (width > 10) {
             defCol.width = width
-          } else {
+          }
+        } else {
+          if (width - allValidWidth > 10) {
             style.width = width
           }
         }
+
       } else if (state === 'finish') {
         if (editFinish) {
           editFinish()
@@ -235,21 +247,34 @@ function Row({env, data, slots, style, row, dragTd}) {
     let editFinish
 
     let moveRow = row
+
     if (col.rowSpan) {//考虑到跨行的情况
       moveRow = data.rows[data.rows.indexOf(row) + col.rowSpan - 1]
     }
 
     let height = moveRow.height || style.height
+    let allValidHeight = 0
 
     dragable(e, ({po, eo, dpo}, state) => {
       if (state === 'start') {
         editFinish = env.edit.focusPaasive()//打开组件，阻止focus样式绘制
+
+        if (!moveRow.height) {
+          data.rows.forEach(row => {
+            if (row.height) {
+              allValidHeight += row.height
+            }
+          })
+        }
       } else if (state === 'ing') {
         height += dpo.dy
-        if (height > 5) {
-          if (moveRow.height) {
+
+        if (moveRow.height) {
+          if (height > 5) {
             moveRow.height = height
-          } else {
+          }
+        } else {
+          if (height - allValidHeight > 10) {
             style.height = height
           }
         }
