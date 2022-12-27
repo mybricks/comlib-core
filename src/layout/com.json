@@ -15,5 +15,14 @@
       "id": "td0",
       "title": "单元格"
     }
+  ],
+  "outputs": [
+    {
+      "id": "click",
+      "title": "点击",
+      "schema": {
+        "type": "any"
+      }
+    }
   ]
 }

@@ -1,19 +1,77 @@
 import React, {Fragment, useCallback} from "react";
-import {uuid} from "../../util";
-import {resetLayout} from "./edtUtils";
+import {dragable, getPosition, uuid} from "../../util";
+import {calculateTds, resetLayout} from "./edtUtils";
 
 import css from './editTips.less'
 
 export function Tips({data, style, slots, element}) {
-  return [(
-    <div key={'topCols'} className={css.colTips}>
+  return (
+    <>
       <ColTips data={data} slots={slots} element={element} style={style}/>
-    </div>
-  ), (
-    <div key={'topRows'} className={css.rowTips}>
       <RowTips data={data} slots={slots} element={element} style={style}/>
-    </div>
-  )]
+      <Radius data={data}/>
+    </>
+  )
+}
+
+function Radius({data}) {
+  const changeRadius = useCallback((e, order) => {
+    const ele = e.target
+
+    let dx, dy
+    let oriPo
+    dragable(e, ({po, epo, dpo}, state) => {
+      if (state === 'start') {
+        dx = 0
+        dy = 0
+        if (order === 0) {
+          oriPo = {
+            left: parseInt(ele.style.left),
+            top: parseInt(ele.style.top)
+          }
+        }
+
+      } else if (state === 'ing') {
+        dx += dpo.dx
+        dy += dpo.dy
+
+        if (order === 0) {
+          ele.style.left = oriPo.left + dx + 'px'
+          ele.style.top = oriPo.top + dy + 'px'
+        }
+
+        if (dx > 0 && dy > 0) {
+          const td = Math.min(dx, dy)
+
+          data.style.borderRadius = Math.round(Math.sqrt(td * td * 2))
+        }
+
+        //console.log(dx, dy,data.style.borderRadius)
+
+      } else if (state === 'finish') {
+
+      }
+    })
+  }, [])
+
+  //const plt = Math.max(data.style.borderRadius, 5)
+  return (
+    <>
+      <div className={css.radius0}
+           style={{left: 5, top:5}}
+           data-mybricks-tip={`圆角`}
+           onMouseDown={e => changeRadius(e, 0)}></div>
+      {/*<div className={css.radius1}*/}
+      {/*     style={{right: 5, top: 5}}*/}
+      {/*     onMouseDown={e => changeRadius(e, 1)}></div>*/}
+      {/*<div className={css.radius2}*/}
+      {/*     style={{right: 5, bottom: 5}}*/}
+      {/*     onMouseDown={e => changeRadius(e, 2)}></div>*/}
+      {/*<div className={css.radius3}*/}
+      {/*     style={{left: 5, bottom: 5}}*/}
+      {/*     onMouseDown={e => changeRadius(e, 3)}></div>*/}
+    </>
+  )
 }
 
 function RowTips({data, slots, style, element}) {
@@ -56,13 +114,15 @@ function RowTips({data, slots, style, element}) {
     rowTips.push(
       <div key={`${row.id}-tip`}
            className={css.tip}
-           style={{left: -10, top: curTop - 3}}
+           data-mybricks-tip={'添加行'}
+           style={{right: -17, top: curTop - 3}}
            onClick={e => addRow(e, row)}/>
     )
 
     if (idx === data.rows.length - 1) {//last col
       rowTips.push(
         <div key={`${row.id}-bar`}
+             data-mybricks-tip={'选择行'}
              className={`${css.rowBar} ${focusNow ? css.focusBar : ''} ${!row.height ? css.flexBar : ''}`}
              style={{
                top: curTop,
@@ -74,6 +134,7 @@ function RowTips({data, slots, style, element}) {
     } else {
       rowTips.push(
         <div key={`${row.id}-bar`}
+             data-mybricks-tip={'选择行'}
              className={`${css.rowBar} ${focusNow ? css.focusBar : ''} ${!row.height ? css.flexBar : ''}`}
              style={{
                top: curTop,
@@ -89,15 +150,20 @@ function RowTips({data, slots, style, element}) {
   rowTips.push(
     <div key={'last'}
          className={css.tip}
+         data-mybricks-tip={'添加行'}
          style={{
-           left: -10,
+           right: -17,
            top: isStyleHeightIsNumber ? style.height - 3 : void 0,
            bottom: isStyleHeightIsNumber ? void 0 : -3
          }}
          onClick={e => addRow(e)}/>
   )
 
-  return rowTips
+  return (
+    <div key={'topRows'} className={css.rowTips}>
+      {rowTips}
+    </div>
+  )
 }
 
 function ColTips({data, slots, style, element}) {
@@ -142,14 +208,16 @@ function ColTips({data, slots, style, element}) {
 
     colTips.push(
       <div key={`${col.id}-tip`}
+           data-mybricks-tip={'添加列'}
            className={css.tip}
-           style={{top: -10, left: curLeft - 3}}
+           style={{bottom: -17, left: curLeft - 3}}
            onClick={e => addCol(e, col)}/>
     )
 
     if (idx === data.cols.length - 1) {//last col
       colTips.push(
         <div key={`${col.id}-bar`}
+             data-mybricks-tip={'选择列'}
              className={`${css.colBar} ${focusNow ? css.focusBar : ''} ${!col.width ? css.flexBar : ''}`}
              style={{
                left: curLeft,
@@ -161,6 +229,7 @@ function ColTips({data, slots, style, element}) {
     } else {
       colTips.push(
         <div key={`${col.id}-bar`}
+             data-mybricks-tip={'选择列'}
              className={`${css.colBar} ${focusNow ? css.focusBar : ''} ${!col.width ? css.flexBar : ''}`}
              style={
                {
@@ -176,16 +245,21 @@ function ColTips({data, slots, style, element}) {
 
   colTips.push(
     <div key={'last'}
+         data-mybricks-tip={'添加列'}
          className={css.tip}
          style={{
-           top: -10,
+           bottom: -17,
            left: isStyleWidthIsNumber ? style.width - 3 : void 0,
            right: isStyleWidthIsNumber ? void 0 : -3
          }}
          onClick={e => addCol(e)}/>
   )
 
-  return colTips
+  return (
+    <div key={'topCols'} className={css.colTips}>
+      {colTips}
+    </div>
+  )
 }
 
 //--------------------------------------------------------------------

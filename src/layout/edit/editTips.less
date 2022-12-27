@@ -1,10 +1,28 @@
 @import "../../theme";
 
+.radius0, .radius1, .radius2, .radius3 {
+  position: absolute;
+  width: 7px;
+  height: 9px;
+  border-radius: 7px;
+  background-color: #CCC;
+  pointer-events: auto;
+  clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  transform: rotate(45deg);
+
+  &:hover {
+    //transform: scale(1.5);
+    background-color: @color-primary;
+    transition: all 100ms linear;
+  }
+}
+
+
 .colTips {
   width: 100%;
   position: absolute;
   left: 0;
-  top: -7px;
+  bottom: 0;
 }
 
 .colBar {
@@ -22,7 +40,7 @@
   height: 100%;
   position: absolute;
   top: 0;
-  left: -7px;
+  right: 0;
 }
 
 .rowBar {
