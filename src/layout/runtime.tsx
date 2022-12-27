@@ -1,7 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 
-import css from './runtime.less';
-
 export default function ({ data, slots }) {
 
   const layoutStyle = useCallback(() => {
@@ -25,7 +23,9 @@ export default function ({ data, slots }) {
     return {
       display: 'grid',
       gridTemplateRows,
-      gridTemplateColumns
+      gridTemplateColumns,
+      width: '100%',
+      height: '100%'
     };
   }, []);
 
@@ -70,7 +70,7 @@ export default function ({ data, slots }) {
   }, []);
 
   return (
-    <div className={css.layout} style={layoutStyle()}>
+    <div style={layoutStyle()}>
       {jsx}
     </div>
   );
