@@ -21,8 +21,8 @@ interface Result {
 
 export default {
   '@init'({style, data}) {
-    style.width = data.width;
-    style.height = data.height;
+    style.width = 200
+    style.height = 100
   },
   '@resize': {
     options: ['width', 'height'],
@@ -46,97 +46,29 @@ export default {
     cate1.title = '常规';
     cate1.items = [
       {
-        title: '添加行',
-        type: 'button',
+        title: '背景',
+        type: 'colorPicker',
         value: {
-          set({data, style, slots}) {
-            const cols = []
-            const lastRow = data.rows[data.rows.length - 1]
-
-            if (typeof style.height === 'number') {
-              let heightCount = 0
-              data.rows.forEach(row => {
-                if (row.height) {
-                  heightCount += row.height
-                }
-              })
-
-              lastRow.height = style.height - heightCount
-
-              style.height += 100
-            } else {
-              lastRow.height = lastRow.height / 2
-            }
-
-
-            lastRow.cols.forEach(col => {
-              const colId = uuid()
-              cols.push({
-                id: colId,
-                defId: col.defId
-              })
-
-              slots.add({
-                id: colId,
-                title: '单元格'
-              })
-            })
-
-            data.rows.push({
-              id: uuid(),
-              cols
-            })
+          get({data, style, slots}) {
+            return data.style.backgroundColor
+          },
+          set({data, style, slots}, color) {
+            data.style.backgroundColor = color
           }
         }
       },
       {
-        title: '添加列',
-        type: 'button',
-        // ifVisible({data}) {
-        //   if (data.rows.length === 1) {
-        //     return true
-        //   }
-        // },
-        value: {
-          set({data, style, slots}) {
-            const metaColId = uuid()
-            const lastCol = data.cols[data.cols.length - 1]
-            if (typeof style.width === 'number') {
-              let widthCount = 0
-              data.cols.forEach(col => {
-                if (col.width) {
-                  widthCount += col.width
-                }
-              })
-
-              lastCol.width = style.width - widthCount
-
-              style.width += 100
-            } else {
-              lastCol.width = lastCol.width / 2
+        title: '事件',
+        items: [
+          {
+            title: '单击',
+            type: '_Event',
+            options: {
+              outputId: 'click'
             }
-
-            data.cols.push({
-              id: metaColId
-            })
-
-            data.rows.forEach(row => {
-              const cols = row.cols
-              const colId = uuid()
-
-              cols.push({
-                id: colId,
-                defId: metaColId
-              })
-
-              slots.add({
-                id: colId,
-                title: '单元格'
-              })
-            })
-          }
-        }
-      },
+          },
+        ]
+      }
     ]
   },
   // '[data-row-id]': [

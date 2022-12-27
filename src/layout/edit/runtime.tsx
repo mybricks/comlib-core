@@ -105,7 +105,7 @@ export default function ({env, data, style, slots}) {
 
   return (
     <div className={css.layout} ref={layoutEl}>
-      <table style={{minHeight: style.height}}>
+      <table style={{minHeight: style.height, ...data.style}}>
         <tbody style={{minHeight: style.height}}>
         <tr className={css.thead}>
           {

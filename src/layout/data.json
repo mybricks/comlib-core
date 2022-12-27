@@ -1,6 +1,8 @@
 {
-  "height": 100,
-  "width": 200,
+  "style": {
+    "backgroundColor": "#FFF",
+    "borderRadius": 0
+  },
   "rows": [
     {
       "id": "tr0",
