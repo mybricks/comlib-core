@@ -59,7 +59,7 @@ export default function ({ data, slots }) {
         }
         
         return (
-          <div key={id} style={{gridArea: `${obj.rowIndex} / ${obj.colIndex} / ${obj.rowSpan} / ${obj.colSpan}`, border: '1px solid red'}}>
+          <div key={id} style={{gridArea: `${obj.rowIndex} / ${obj.colIndex} / ${obj.rowSpan} / ${obj.colSpan}`}}>
             {slots[id].render({style: col.style})}
           </div>
         );
