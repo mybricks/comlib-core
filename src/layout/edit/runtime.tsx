@@ -46,10 +46,12 @@ export default function ({env, data, style, slots}) {
       const tableEl = layoutEl.current as HTMLElement
       let tablePo, startPo
       let tStyle
+      let editFinish
       dragable(e, ({po, epo, dpo}, state) => {
         if (state === 'start') {
           tablePo = getPosition(tableEl)
           startPo = {x: epo.ex - tablePo.x, y: epo.ey - tablePo.y}
+          editFinish = env.edit.focusPaasive()
         } else if (state === 'ing') {
           const finishPo = {x: epo.ex - tablePo.x, y: epo.ey - tablePo.y}
 
@@ -71,6 +73,8 @@ export default function ({env, data, style, slots}) {
             colIds
           })
         } else if (state === 'finish') {
+          editFinish()
+
           if (tStyle) {
             const po = {x: tStyle.left, y: tStyle.top}
             const {colIds, left, top, width, height} = calculateTds({data}, {

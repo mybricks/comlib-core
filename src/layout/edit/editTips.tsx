@@ -58,7 +58,7 @@ function Radius({data}) {
   return (
     <>
       <div className={css.radius0}
-           style={{left: 5, top:5}}
+           style={{left: 5, top: 5}}
            data-mybricks-tip={`圆角`}
            onMouseDown={e => changeRadius(e, 0)}></div>
       {/*<div className={css.radius1}*/}
@@ -114,15 +114,15 @@ function RowTips({data, slots, style, element}) {
     rowTips.push(
       <div key={`${row.id}-tip`}
            className={css.tip}
-           data-mybricks-tip={'添加行'}
-           style={{right: -17, top: curTop - 3}}
+           data-mybricks-tip={`{content:'添加行',position:'left'}`}
+           style={{left: -10, top: curTop - 3}}
            onClick={e => addRow(e, row)}/>
     )
 
     if (idx === data.rows.length - 1) {//last col
       rowTips.push(
         <div key={`${row.id}-bar`}
-             data-mybricks-tip={'选择行'}
+             data-mybricks-tip={`{content:'选择行',position:'left'}`}
              className={`${css.rowBar} ${focusNow ? css.focusBar : ''} ${!row.height ? css.flexBar : ''}`}
              style={{
                top: curTop,
@@ -134,7 +134,7 @@ function RowTips({data, slots, style, element}) {
     } else {
       rowTips.push(
         <div key={`${row.id}-bar`}
-             data-mybricks-tip={'选择行'}
+             data-mybricks-tip={`{content:'选择行',position:'left'}`}
              className={`${css.rowBar} ${focusNow ? css.focusBar : ''} ${!row.height ? css.flexBar : ''}`}
              style={{
                top: curTop,
@@ -150,9 +150,9 @@ function RowTips({data, slots, style, element}) {
   rowTips.push(
     <div key={'last'}
          className={css.tip}
-         data-mybricks-tip={'添加行'}
+         data-mybricks-tip={`{content:'添加行',position:'left'}`}
          style={{
-           right: -17,
+           left: -10,
            top: isStyleHeightIsNumber ? style.height - 3 : void 0,
            bottom: isStyleHeightIsNumber ? void 0 : -3
          }}
@@ -208,7 +208,7 @@ function ColTips({data, slots, style, element}) {
 
     colTips.push(
       <div key={`${col.id}-tip`}
-           data-mybricks-tip={'添加列'}
+           data-mybricks-tip={`{content:'添加列',position:'bottom'}`}
            className={css.tip}
            style={{bottom: -17, left: curLeft - 3}}
            onClick={e => addCol(e, col)}/>
@@ -217,7 +217,7 @@ function ColTips({data, slots, style, element}) {
     if (idx === data.cols.length - 1) {//last col
       colTips.push(
         <div key={`${col.id}-bar`}
-             data-mybricks-tip={'选择列'}
+             data-mybricks-tip={`{content:'选择当前列',position:'bottom'}`}
              className={`${css.colBar} ${focusNow ? css.focusBar : ''} ${!col.width ? css.flexBar : ''}`}
              style={{
                left: curLeft,
@@ -229,7 +229,7 @@ function ColTips({data, slots, style, element}) {
     } else {
       colTips.push(
         <div key={`${col.id}-bar`}
-             data-mybricks-tip={'选择列'}
+             data-mybricks-tip={`{content:'选择当前列',position:'bottom'}`}
              className={`${css.colBar} ${focusNow ? css.focusBar : ''} ${!col.width ? css.flexBar : ''}`}
              style={
                {
@@ -245,7 +245,7 @@ function ColTips({data, slots, style, element}) {
 
   colTips.push(
     <div key={'last'}
-         data-mybricks-tip={'添加列'}
+         data-mybricks-tip={`{content:'添加列',position:'bottom'}`}
          className={css.tip}
          style={{
            bottom: -17,

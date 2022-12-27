@@ -322,6 +322,21 @@ export default {
     title: '单元格',
     items: [
       {
+        title: '名称',
+        type: 'text',
+        value: {
+          get({data, style, slots, focusArea}) {
+            const {col, slot} = getByFousArea({data, slots, focusArea})
+            return col.style.backgroundColor
+          },
+          set({data, style, slots, focusArea}, color) {
+            const {col, slot} = getByFousArea({data, slots, focusArea})
+            col.style.backgroundColor = color
+          }
+        }
+      },
+      {},
+      {
         title: "布局",
         type: "layout",
         options: [],
@@ -342,6 +357,30 @@ export default {
             }
           },
         },
+      },
+      {
+        title: '背景',
+        type: 'colorPicker',
+        value: {
+          get({data, style, slots, focusArea}) {
+            const {col, slot} = getByFousArea({data, slots, focusArea})
+            return col.style.backgroundColor
+          },
+          set({data, style, slots, focusArea}, color) {
+            const {col, slot} = getByFousArea({data, slots, focusArea})
+            col.style.backgroundColor = color
+          }
+        }
+      },
+      {},
+      {
+        title: '添加状态',
+        type: 'button',
+        value: {
+          set() {
+            alert('TODO')
+          }
+        }
       }
     ]
   }
