@@ -1,4 +1,4 @@
-export default function ({data, outputs, inputs}) {
+export default function ({env, data, outputs, inputs}) {
   inputs['get']((val, relOutpus) => {
     const cv = clone(data.val)
     relOutpus['return'](cv)
@@ -6,7 +6,7 @@ export default function ({data, outputs, inputs}) {
 
   inputs['set'](val => {
     data.val = val
-    outputs['changed'](clone(val))
+    outputs['changed'](clone(val), true)//notify all forked coms
   })
 
   // outputs['changed'](data.val)

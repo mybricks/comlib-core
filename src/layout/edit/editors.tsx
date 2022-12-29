@@ -6,7 +6,6 @@
  * CheMingjun @2019
  * mybricks@126.com
  */
-import {uuid} from "../../util";
 import {Tips} from "./editTips";
 import React from "react";
 import {resetLayout} from "./edtUtils";
@@ -327,11 +326,11 @@ export default {
         value: {
           get({data, style, slots, focusArea}) {
             const {col, slot} = getByFousArea({data, slots, focusArea})
-            return col.style.backgroundColor
+            return col.name
           },
-          set({data, style, slots, focusArea}, color) {
+          set({data, style, slots, focusArea}, name) {
             const {col, slot} = getByFousArea({data, slots, focusArea})
-            col.style.backgroundColor = color
+            col.name = name
           }
         }
       },
@@ -364,10 +363,13 @@ export default {
         value: {
           get({data, style, slots, focusArea}) {
             const {col, slot} = getByFousArea({data, slots, focusArea})
-            return col.style.backgroundColor
+            return col.style?.backgroundColor
           },
           set({data, style, slots, focusArea}, color) {
             const {col, slot} = getByFousArea({data, slots, focusArea})
+            if (!col.style) {
+              col.style = {}
+            }
             col.style.backgroundColor = color
           }
         }

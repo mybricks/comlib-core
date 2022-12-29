@@ -73,7 +73,9 @@ export default function ({env, data, style, slots}) {
             colIds
           })
         } else if (state === 'finish') {
-          editFinish()
+          if (editFinish) {
+            editFinish()
+          }
 
           if (tStyle) {
             const po = {x: tStyle.left, y: tStyle.top}
