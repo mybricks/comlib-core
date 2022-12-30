@@ -10,7 +10,8 @@
 const path = require('path');
 
 module.exports = {
-  entry: {'mybricks.core-comlib':'./src/runtime.ts'},
+  mode: 'production',
+  entry: {'mybricks.core-comlib': './src/runtime.ts'},
   //devtool: 'cheap-module-source-map',
   //devtool:'cheap-module-eval-source-map',
   module: {
@@ -76,7 +77,7 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts'],
     alias: {
-      'xgraph.sdk': require('path').resolve(__dirname, '../node_modules/@vdian/xgraph.sdk')
+      //'xgraph.sdk': require('path').resolve(__dirname, '../node_modules/@vdian/xgraph.sdk')
     }
   },
   externals: [{

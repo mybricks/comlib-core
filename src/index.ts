@@ -121,7 +121,7 @@ function merge({
   return Object.assign(comDef, {
     runtime: rt,
     icon: icon,
-    runtimeEdit: rtEdit,
+    'runtime.edit': rtEdit,
     data,
     editors,
     assistence
