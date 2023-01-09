@@ -1,6 +1,6 @@
 {
   "name": "@mybricks/comlib-core",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "MyBricks核心组件库",
   "main": "index.js",
   "author": "CheMingjun",
