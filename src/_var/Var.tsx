@@ -6,7 +6,7 @@ export default function ({env, data, outputs, inputs}) {
 
   inputs['set'](val => {
     data.val = val
-    outputs['changed'](clone(val), true)//notify all forked coms
+    outputs['changed'](clone(val))//notify all forked coms
   })
 
   // outputs['changed'](data.val)
