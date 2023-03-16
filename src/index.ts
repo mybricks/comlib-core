@@ -10,6 +10,14 @@ import moduleDef from './module/com.json'
 import moduleRT from './module/runtime'
 import moduleEdt from './module/editors'
 
+import selectionDef from './selection/com.json'
+import selectionRT from './selection/runtime'
+import selectionEditors from './selection/editors'
+
+import sceneDef from './_scene/com.json'
+import sceneRT from './_scene/runtime'
+import sceneEditors from './_scene/editors'
+
 import fnDef from './fn/com.json'
 import Fn from './fn/Fn'
 
@@ -45,6 +53,16 @@ const lib = {
   version: '1.0.1',
   comAray: [
     merge({
+      comDef: selectionDef,
+      rt: selectionRT,
+      editors: selectionEditors
+    }),
+    merge({
+      comDef: sceneDef,
+      rt: sceneRT,
+      editors:sceneEditors
+    }),
+    merge({
       comDef: fnDef,
       rt: Fn
     }),
@@ -68,14 +86,14 @@ const lib = {
       rt: connectorRt,
       editors: connectorEditors
     }),
-    merge({
-      comDef: layoutDef,
-      icon: Logo,
-      data: layoutData,
-      rt: layoutRt,
-      rtEdit: layoutRtEdt,
-      editors: layoutEditors
-    }),
+    // merge({
+    //   comDef: layoutDef,
+    //   icon: Logo,
+    //   data: layoutData,
+    //   rt: layoutRt,
+    //   rtEdit: layoutRtEdt,
+    //   editors: layoutEditors
+    // }),
     // merge({
     //   comDef: frameOutputDef
     // })
@@ -100,7 +118,7 @@ const lib = {
     // merge(dialogOutputs)
   ],
   //visible: true,
-  //visible: false//TODO
+  visible: false//TODO
 }
 
 export default lib
@@ -116,7 +134,7 @@ function merge({
                  rtEdit,
                  data,
                  editors,
-                 assistence
+                 assistence,
                }: { comDef, icon?, rt?, data?, editors?, assistence? }) {
   return Object.assign(comDef, {
     runtime: rt,

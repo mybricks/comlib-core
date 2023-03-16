@@ -1,0 +1,10 @@
+{
+  "title": "选区",
+  "namespace": "mybricks.core-comlib.selection",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "选区",
+  "runtime": "./runtime.tsx",
+  "editors": "./editors.ts"
+}
