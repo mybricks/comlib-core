@@ -52,16 +52,51 @@ export default {
     }
   },
   ':root': [
-    // {
-    //   title: '赋值',
-    //   type: 'switch',
-    //   value: {
-    //     set({data, input}: Result) {
-    //       console.log(data)
-    //       debugger
-    //     }
-    //   }
-    // }
+    {
+      title: '变量名称',
+      type: 'text',
+      value: {
+        get({title}) {
+          return title
+        }, set({setTitle}, title) {
+          setTitle(title)
+        }
+      }
+    },
+    null,
+    {
+      title: '类型',
+      type: '_schema',
+      value: {
+        get({data, outputs}) {
+          const returnPin = outputs.get('return')
+          return returnPin.schema
+        }, set({data, outputs}, schema) {
+          const allPins = outputs.get()
+          allPins.forEach(pin => {
+            outputs.get(pin.id).setSchema(schema)
+          })
+        }
+      }
+    },
+    {
+      title: '初始值',
+      type: '_schemaValue',
+      desc: `变量最初的取值`,
+      options({outputs}) {
+        const returnPin = outputs.get('return')
+        return {
+          schema: returnPin.schema
+        }
+      },
+      value: {
+        get({data}) {
+          return data.initValue
+        }, set({data}, tData) {
+          data.initValue = tData
+        }
+      }
+    }
   ]
 }
 

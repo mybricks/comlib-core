@@ -18,10 +18,15 @@ import sceneDef from './_scene/com.json'
 import sceneRT from './_scene/runtime'
 import sceneEditors from './_scene/editors'
 
+import frameInputDef from './frame-input/com.json'
+import frameInputEditors from './frame-input/editors'
+import frameInputRt from './frame-input/runtime'
+
 import fnDef from './fn/com.json'
 import Fn from './fn/Fn'
 
 import varDef from './_var/com.json'
+import VarData from './_var/data.json'
 import Var from './_var/Var'
 import varEditors from './_var/editors'
 
@@ -46,8 +51,8 @@ import frameOutputDef from './frame-output/com.json'
 // import {T_XGraphComDef} from "@sdk";
 
 const lib = {
-  id: 'mybricks-core-comlib',
-  title: '基础组件库',
+  id: '@mybricks/comlib-core',
+  title: 'Mybricks基础组件库',
   author: 'CheMingjun',
   icon: '',
   version: '1.0.1',
@@ -60,7 +65,12 @@ const lib = {
     merge({
       comDef: sceneDef,
       rt: sceneRT,
-      editors:sceneEditors
+      editors: sceneEditors
+    }),
+    merge({
+      comDef: frameInputDef,
+      editors: frameInputEditors,
+      rt: frameInputRt
     }),
     merge({
       comDef: fnDef,
@@ -68,6 +78,7 @@ const lib = {
     }),
     merge({
       comDef: varDef,
+      data:VarData,
       rt: Var,
       editors: varEditors
     }),

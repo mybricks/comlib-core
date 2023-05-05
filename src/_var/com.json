@@ -7,6 +7,7 @@
   "version": "1.0.0",
   "description": "变量",
   "icon": "./icon.png",
+  "data": "./data.json",
   "runtime": "./Var.tsx",
   "editors": "./editors.tsx",
   "rtType": "js",
@@ -26,6 +27,13 @@
       "title": "赋值",
       "schema": {
         "type": "follow"
+      }
+    },
+    {
+      "id": "reset",
+      "title": "重置",
+      "schema": {
+        "type": "any"
       }
     }
   ],

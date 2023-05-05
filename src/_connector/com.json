@@ -1,5 +1,6 @@
 {
   "deprecated": true,
+  "visibility": false,
   "title": "连接器",
   "namespace": "mybricks.core-comlib.connector",
   "author": "MyBricks",

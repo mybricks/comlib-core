@@ -1,0 +1,33 @@
+{
+  "visibility": false,
+  "title": "作用域输入",
+  "namespace": "mybricks.core-comlib.frame-input",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "作用域输入",
+  "rtType": "js",
+  "runtime": "./runtime.ts",
+  "editors": "./editor.tsx",
+  "inputs": [
+    {
+      "id": "getCurValue",
+      "title": "获取",
+      "schema": {
+        "type": "any"
+      },
+      "rels": [
+        "return"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "id": "return",
+      "title": "结果",
+      "schema": {
+        "type": "follow"
+      }
+    }
+  ]
+}
