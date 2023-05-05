@@ -18,6 +18,8 @@ import typeChangeDef from "./_type-change/com.json";
 import typeChangeRt from "./_type-change/rt";
 import connectorDef from "./_connector/com.json";
 import connectorRt from "./_connector/runtime";
+import frameInputDef from './frame-input/com.json';
+import frameInputRt from './frame-input/runtime';
 
 
 const lib = {
@@ -47,6 +49,10 @@ const lib = {
       comDef: connectorDef,
       rt: connectorRt
     }),
+    merge({
+      comDef: frameInputDef,
+      rt: frameInputRt
+    })
   ]
 }
 
