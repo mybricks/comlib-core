@@ -1,4 +1,4 @@
-export default function ({env, data, outputs, inputs}) {
+export default function ({env, data, outputs, inputs,_notifyBindings}) {
   inputs['get']((val, relOutpus) => {
     const nowVal = data.val !== void 0 ? data.val : data.initValue
     const cv = clone(nowVal)
@@ -8,13 +8,18 @@ export default function ({env, data, outputs, inputs}) {
 
   inputs['set'](val => {
     data.val = val
-    outputs['changed'](clone(val), true)//notify all forked coms
+    const cVal = clone(val)
+    outputs['changed'](cVal, true)//notify all forked coms
+    _notifyBindings(cVal)
   })
 
   inputs['reset'](() => {
     const val = data.initValue
     data.val = val
-    outputs['changed'](clone(val), true)//notify all forked coms
+    const cVal = clone(val)
+
+    outputs['changed'](cVal, true)//notify all forked coms
+    _notifyBindings(cVal)
   })
 
   // outputs['changed'](data.val)
