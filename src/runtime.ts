@@ -20,6 +20,8 @@ import connectorDef from "./_connector/com.json";
 import connectorRt from "./_connector/runtime";
 import frameInputDef from './frame-input/com.json';
 import frameInputRt from './frame-input/runtime';
+import popupDef from './popup/com.json';
+import popupRt from './popup/runtime';
 
 
 const lib = {
@@ -52,6 +54,10 @@ const lib = {
     merge({
       comDef: frameInputDef,
       rt: frameInputRt
+    }),
+    merge({
+      comDef: popupDef,
+      rt: popupRt
     })
   ]
 }
