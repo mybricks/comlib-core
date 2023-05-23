@@ -1,0 +1,13 @@
+{
+  "buttons": {
+    "commit": {
+      "visible": true
+    },
+    "cancel": {
+      "visible": true
+    },
+    "apply": {
+      "visible": false
+    }
+  }
+}

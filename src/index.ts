@@ -14,9 +14,9 @@ import selectionDef from './selection/com.json'
 import selectionRT from './selection/runtime'
 import selectionEditors from './selection/editors'
 
-import sceneDef from './_scene/com.json'
-import sceneRT from './_scene/runtime'
-import sceneEditors from './_scene/editors'
+import scenesDef from './_scenes/com.json'
+import scenesRT from './_scenes/runtime'
+import scenesEditors from './_scenes/editors'
 
 import frameInputDef from './frame-input/com.json'
 import frameInputEditors from './frame-input/editors'
@@ -38,6 +38,11 @@ import connectorDef from './_connector/com.json'
 import connectorRt from './_connector/runtime'
 import connectorEditors from './_connector/editors'
 
+import popupDef from './popup/com.json'
+import popupRt from './popup/runtime'
+import popupData from './popup/data.json'
+import popupEditors from './popup/editors'
+
 import layoutDef from './layout/com.json'
 import layoutRt from './layout/runtime'
 import layoutRtEdt from './layout/edit/runtime'
@@ -58,14 +63,20 @@ const lib = {
   version: '1.0.1',
   comAray: [
     merge({
+      comDef: popupDef,
+      data: popupData,
+      rt: popupRt,
+      editors: popupEditors
+    }),
+    merge({
       comDef: selectionDef,
       rt: selectionRT,
       editors: selectionEditors
     }),
     merge({
-      comDef: sceneDef,
-      rt: sceneRT,
-      editors: sceneEditors
+      comDef: scenesDef,
+      rt: scenesRT,
+      editors: scenesEditors
     }),
     merge({
       comDef: frameInputDef,
@@ -78,7 +89,7 @@ const lib = {
     }),
     merge({
       comDef: varDef,
-      data:VarData,
+      data: VarData,
       rt: Var,
       editors: varEditors
     }),

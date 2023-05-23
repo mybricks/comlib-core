@@ -1,0 +1,11 @@
+{
+  "title": "打开对话框",
+  "namespace": "mybricks.core-comlib.scenes",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "切换场景",
+  "icon": "./icon.png",
+  "runtime": "./runtime.ts",
+  "rtType": "js"
+}
