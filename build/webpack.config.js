@@ -18,11 +18,19 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true
-        }
-        // exclude: /node_modules/
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              silent: true,
+              transpileOnly: true,
+              compilerOptions: {
+                module: 'es6',
+                target: 'es6'
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -83,15 +91,8 @@ module.exports = {
     }
   },
   externals: [{
-    'React': 'React',
-    'react': 'React',
-    // 'react-dom': 'ReactDOM',
-    'react-dom': {
-      'commonjs': 'react-dom',
-      'commonjs2': 'react-dom',
-      'amd': 'react-dom',
-      'root': 'ReactDOM'
-    }
+    'react': {commonjs: "react", commonjs2: "react", amd: "react", root: "React"},
+    'react-dom': {commonjs: "react-dom", commonjs2: "react-dom", amd: "react-dom", root: "ReactDOM"},
   }],
   output: {
     globalObject: 'this',

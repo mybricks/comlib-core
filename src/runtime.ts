@@ -22,6 +22,8 @@ import frameInputDef from './frame-input/com.json';
 import frameInputRt from './frame-input/runtime';
 import popupDef from './popup/com.json';
 import popupRt from './popup/runtime';
+import _scenesDef from './_scenes/com.json'
+import _scenesRt from './_scenes/runtime'
 
 
 const lib = {
@@ -58,6 +60,10 @@ const lib = {
     merge({
       comDef: popupDef,
       rt: popupRt
+    }),
+    merge({
+      comDef: _scenesDef,
+      rt: _scenesRt
     })
   ]
 }

@@ -1,4 +1,4 @@
-import {useCallback, useMemo} from "react";
+import React, {useCallback, useMemo} from "react";
 import css from "./css.lazy.less";
 
 export default function ({_env, env, data, outputs, slots, createPortal}) {
