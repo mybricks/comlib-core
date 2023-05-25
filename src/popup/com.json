@@ -8,33 +8,21 @@
   "icon": "./icon.png",
   "data": "./data.json",
   "runtime": "./runtime.tsx",
-  "editors": "./editors.tsx",
+  "editors": "./editors.ts",
   "slots": [
-    {
-      "id": "header",
-      "title": "标题栏"
-    },
     {
       "id": "body",
       "title": "内容"
-    },
-    {
-      "id": "toolbar",
-      "title": "工具栏"
     }
   ],
   "outputs": [
     {
-      "id": "commit",
+      "id": "ok",
       "title": "确定"
     },
     {
       "id": "cancel",
       "title": "取消"
-    },
-    {
-      "id": "apply",
-      "title": "应用"
     }
   ]
 }
