@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react'
 
-import css from './runtime.less'
+import css from './runtime.lazy.less'
 
 export default function ({
   env,
@@ -11,7 +11,7 @@ export default function ({
 }) {
 
   useMemo(() => {
-    // _env.loadCSSLazy(css)
+    _env.loadCSSLazy(css)
   }, [])
 
   const handleClose = useCallback(() => {
@@ -38,7 +38,7 @@ export default function ({
         </button>
 
         <div className={css.header}>
-          <div className={css.title} data-title>{data.title} hello world</div>
+          <div className={css.title} data-title>{data.title}</div>
         </div>
 
         <div className={`${css.body} ${env.edit ? css.bodyEdit : ''}`}>
