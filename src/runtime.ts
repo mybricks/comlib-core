@@ -20,8 +20,8 @@ import connectorDef from "./_connector/com.json";
 import connectorRt from "./_connector/runtime";
 import frameInputDef from './frame-input/com.json';
 import frameInputRt from './frame-input/runtime';
-import popupDef from './popup/com.json';
-import popupRt from './popup/runtime';
+// import popupDef from './popup/com.json';
+// import popupRt from './popup/runtime';
 import _scenesDef from './_scenes/com.json'
 import _scenesRt from './_scenes/runtime'
 
@@ -57,10 +57,10 @@ const lib = {
       comDef: frameInputDef,
       rt: frameInputRt
     }),
-    merge({
-      comDef: popupDef,
-      rt: popupRt
-    }),
+    // merge({
+    //   comDef: popupDef,
+    //   rt: popupRt
+    // }),
     merge({
       comDef: _scenesDef,
       rt: _scenesRt
