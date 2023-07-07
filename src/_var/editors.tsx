@@ -79,24 +79,24 @@ export default {
         }
       }
     },
-    {
-      title: '初始值',
-      type: '_schemaValue',
-      desc: `变量最初的取值`,
-      options({outputs}) {
-        const returnPin = outputs.get('return')
-        return {
-          schema: returnPin.schema
-        }
-      },
-      value: {
-        get({data}) {
-          return data.initValue
-        }, set({data}, tData) {
-          data.initValue = tData
-        }
-      }
-    }
+    // {
+    //   title: '初始值',
+    //   type: '_schemaValue',
+    //   desc: `变量最初的取值`,
+    //   options({outputs}) {
+    //     const returnPin = outputs.get('return')
+    //     return {
+    //       schema: returnPin.schema
+    //     }
+    //   },
+    //   value: {
+    //     get({data}) {
+    //       return data.initValue
+    //     }, set({data}, tData) {
+    //       data.initValue = tData
+    //     }
+    //   }
+    // }
   ]
 }
 

@@ -15,6 +15,7 @@ import selectionRT from './selection/runtime'
 import selectionEditors from './selection/editors'
 
 import scenesDef from './_scenes/com.json'
+import scenesData from './_scenes/data.json'
 import scenesRT from './_scenes/runtime'
 import scenesEditors from './_scenes/editors'
 
@@ -62,12 +63,12 @@ const lib = {
   icon: '',
   version: '1.0.1',
   comAray: [
-    merge({
-      comDef: popupDef,
-      data: popupData,
-      rt: popupRt,
-      editors: popupEditors
-    }),
+    // merge({
+    //   comDef: popupDef,
+    //   data: popupData,
+    //   rt: popupRt,
+    //   editors: popupEditors
+    // }),
     merge({
       comDef: selectionDef,
       rt: selectionRT,
@@ -75,6 +76,7 @@ const lib = {
     }),
     merge({
       comDef: scenesDef,
+      data:scenesData,
       rt: scenesRT,
       editors: scenesEditors
     }),
@@ -106,7 +108,8 @@ const lib = {
     merge({
       comDef: connectorDef,
       rt: connectorRt,
-      editors: connectorEditors
+      editors: connectorEditors,
+      visibility:false
     }),
     // merge({
     //   comDef: layoutDef,
@@ -156,8 +159,10 @@ function merge({
                  rtEdit,
                  data,
                  editors,
-                 assistence,
-               }: { comDef, icon?, rt?, data?, editors?, assistence? }) {
+                 assistence
+               }: {
+  comDef, icon?, rt?, data?, editors?, assistence?
+}) {
   return Object.assign(comDef, {
     runtime: rt,
     icon: icon,

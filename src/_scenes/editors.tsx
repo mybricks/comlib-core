@@ -6,33 +6,40 @@
  * CheMingjun @2019
  * mybricks@126.com
  */
+const allTypes = [
+  {
+    label: '新页面',
+    value: 'blank'
+  },
+  {
+    label: '重定向',
+    value: 'redirect'
+  }
+]
 
 export default {
-  // '@init'({data, setDesc}) {
-  //   if (!data.scene) {
-  //     setDesc(`未配置场景`)
-  //   }
-  // },
+  '@init': ({data, setDesc, setAutoRun, isAutoRun}) => {
+    setDesc(`（新页面）`)
+  },
   ':root': [
-    // {
-    //   title: '场景',
-    //   type: '_sceneSelect',
-    //   options({data, input, output}) {
-    //     return {
-    //       current: data.scene
-    //     }
-    //   },
-    //   value: {
-    //     get({data, input, output}) {
-    //       return data.scene
-    //     },
-    //     set({data, setDesc}, val) {
-    //       data.scene = val
-    //
-    //       setDesc(`${val.title}`)
-    //     }
-    //   }
-    // }
+    {
+      title: '打开方式',
+      type: 'select',
+      options({data, input, output}) {
+        return allTypes
+      },
+      value: {
+        get({data, input, output}) {
+          return data.openType || 'blank'
+        },
+        set({data, setDesc}, val) {
+          data.openType = val
+
+          const typeTitle = allTypes.find(type => type.value === val).label
+          setDesc(`（${typeTitle}）`)
+        }
+      }
+    }
   ]
 }
 
