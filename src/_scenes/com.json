@@ -1,4 +1,5 @@
 {
+  "visibility": false,
   "title": "打开对话框",
   "namespace": "mybricks.core-comlib.scenes",
   "author": "CheMingjun",

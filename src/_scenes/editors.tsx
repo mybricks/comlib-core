@@ -25,6 +25,9 @@ export default {
     {
       title: '打开方式',
       type: 'select',
+      ifVisible({data}) {
+        return data._sceneShowType !== 'popup'
+      },
       options({data, input, output}) {
         return allTypes
       },
