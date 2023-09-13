@@ -5,6 +5,17 @@
   "author": "CheMingjun",
   "author_name": "车明君",
   "version": "1.0.0",
-  "description": "Frame输出",
-  "rtType": "js"
+  "description": "作用域输出",
+  "rtType": "js",
+  "runtime": "./runtime.ts",
+  "editors": "./editor.tsx",
+  "inputs": [
+    {
+      "id": "output",
+      "title": "输出",
+      "schema": {
+        "type": "any"
+      }
+    }
+  ]
 }

@@ -23,6 +23,10 @@ import frameInputDef from './frame-input/com.json'
 import frameInputEditors from './frame-input/editors'
 import frameInputRt from './frame-input/runtime'
 
+import frameOutputDef from './frame-output/com.json'
+import frameOutputEditors from './frame-output/editors'
+import frameOutputRt from './frame-output/runtime'
+
 import fnDef from './fn/com.json'
 import Fn from './fn/Fn'
 
@@ -51,7 +55,7 @@ import layoutData from './layout/data.json'
 import layoutEditors from './layout/edit/editors'
 import {Logo} from './layout/Icons'
 
-import frameOutputDef from './frame-output/com.json'
+//import frameOutputDef from './frame-output/com.json'
 
 
 // import {T_XGraphComDef} from "@sdk";
@@ -76,7 +80,7 @@ const lib = {
     }),
     merge({
       comDef: scenesDef,
-      data:scenesData,
+      data: scenesData,
       rt: scenesRT,
       editors: scenesEditors
     }),
@@ -84,6 +88,11 @@ const lib = {
       comDef: frameInputDef,
       editors: frameInputEditors,
       rt: frameInputRt
+    }),
+    merge({
+      comDef: frameOutputDef,
+      editors: frameOutputEditors,
+      rt: frameOutputRt
     }),
     merge({
       comDef: fnDef,
@@ -109,7 +118,7 @@ const lib = {
       comDef: connectorDef,
       rt: connectorRt,
       editors: connectorEditors,
-      visibility:false
+      visibility: false
     }),
     // merge({
     //   comDef: layoutDef,
