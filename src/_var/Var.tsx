@@ -30,6 +30,9 @@ export default function ({env, data, outputs, inputs, _notifyBindings}) {
 function clone(val) {
   if (val && typeof val === 'object') {
     try {
+      if (val instanceof FormData) {
+        return val
+      }
       return JSON.parse(JSON.stringify(val))
     } catch (ex) {
       return val
