@@ -6,15 +6,29 @@
  * CheMingjun @2019
  * mybricks@126.com
  */
-import css from './css.less'
-import {useMemo, useState} from "react";
+import { useMemo } from 'react'
 
-export default function ({env, data, slots}) {
-  const jsx = env.renderCom(data.toJSON)
+export default function ({ env, data, inputs: propsInputs, outputs: propsOutputs }) {
+  const render = useMemo(() => {
+    const { toJSON } = data
+    return env.renderCom(toJSON, {
+      ref(refs) {
+        const { inputs, outputs } = toJSON
 
-  return (
-    <div>
-      {jsx}
-    </div>
-  )
+        inputs.forEach(({ id }) => {
+          propsInputs[id]?.((value) => {
+            refs.inputs[id](value)
+          })
+        })
+
+        outputs.forEach(({ id }) => {
+          refs.outputs(id, propsOutputs[id]);
+        })
+      },
+      /** 禁止主动触发IO、执行自执行计算组件 */
+      disableAutoRun: true
+    })
+  }, [])
+
+  return render
 }
