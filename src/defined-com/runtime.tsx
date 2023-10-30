@@ -17,7 +17,7 @@ export default function ({ env, data, inputs: propsInputs, outputs: propsOutputs
           const { inputs, outputs } = toJSON
 
           inputs.forEach(({ id }) => {
-            propsInputs[id]?.((value) => {
+            propsInputs[id]((value) => {
               refs.inputs[id](value)
             })
           })
