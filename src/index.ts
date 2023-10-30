@@ -19,6 +19,11 @@ import scenesData from './_scenes/data.json'
 import scenesRT from './_scenes/runtime'
 import scenesEditors from './_scenes/editors'
 
+import definedComDef from './defined-com/com.json'
+import definedComData from './defined-com/data.json'
+import definedComRT from './defined-com/runtime'
+import definedComEdt from './defined-com/editors'
+
 import frameInputDef from './frame-input/com.json'
 import frameInputEditors from './frame-input/editors'
 import frameInputRt from './frame-input/runtime'
@@ -83,6 +88,12 @@ const lib = {
       data: scenesData,
       rt: scenesRT,
       editors: scenesEditors
+    }),
+    merge({
+      comDef: definedComDef,
+      data: definedComData,
+      rt: definedComRT,
+      editors: definedComEdt
     }),
     merge({
       comDef: frameInputDef,

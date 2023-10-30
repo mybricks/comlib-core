@@ -1,0 +1,12 @@
+{
+  "title": "自定义组件",
+  "namespace": "mybricks.core-comlib.defined-com",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "自定义组件",
+  "icon": "./icon.png",
+  "data": "./data.json",
+  "runtime": "./runtime.ts",
+  "editors": "./editors.ts"
+}
