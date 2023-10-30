@@ -26,6 +26,8 @@ export default function ({ env, data, inputs: propsInputs, outputs: propsOutputs
             refs.outputs(id, propsOutputs[id]);
           })
         }
+
+        refs.run()
       },
       /** 禁止主动触发IO、执行自执行计算组件 */
       disableAutoRun: true
