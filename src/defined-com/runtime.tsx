@@ -10,11 +10,14 @@ import { useMemo } from 'react'
 
 export default function ({ env, data, inputs: propsInputs, outputs: propsOutputs }) {
   const render = useMemo(() => {
-    const { toJSON } = data
-    return env.renderCom(toJSON, {
+    const json = env.getDefinedComJSON(data.definedId)
+
+
+
+    return env.renderCom(json, {
       ref(refs) {
         if (env.runtime) {
-          const { inputs, outputs } = toJSON
+          const { inputs, outputs } = json
 
           inputs.forEach(({ id }) => {
             propsInputs[id]((value) => {
