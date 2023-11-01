@@ -12,8 +12,6 @@ export default function ({ env, data, inputs: propsInputs, outputs: propsOutputs
   const render = useMemo(() => {
     const json = env.getDefinedComJSON(data.definedId)
 
-
-
     return env.renderCom(json, {
       ref(refs) {
         if (env.runtime) {
