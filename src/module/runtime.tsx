@@ -6,17 +6,34 @@
  * CheMingjun @2019
  * mybricks@126.com
  */
-import css from './css.less'
+import { useMemo } from 'react'
 
-export default function ({env, data, slots}) {
-  if (env.runtime) {
-    const names = Object.keys(slots)
-    const slotName = names[0]
+export default function ({ env, data, inputs: propsInputs, outputs: propsOutputs }) {
+  const render = useMemo(() => {
+    const json = env.getModuleJSON(data.definedId)
 
-    // Object.values(frames).forEach(frame => {
-    //   frame(void 0,slotName)
-    // })
+    return env.renderCom(json, {
+      ref(refs) {
+        if (env.runtime) {
+          const { inputs, outputs } = json
 
-    return slots[slotName].render(null, slotName)
-  }
+          inputs.forEach(({ id }) => {
+            propsInputs[id]((value) => {
+              refs.inputs[id](value)
+            })
+          })
+  
+          outputs.forEach(({ id }) => {
+            refs.outputs(id, propsOutputs[id]);
+          })
+        }
+
+        refs.run()
+      },
+      /** 禁止主动触发IO、执行自执行计算组件 */
+      disableAutoRun: true
+    })
+  }, [])
+
+  return render
 }

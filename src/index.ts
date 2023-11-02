@@ -6,9 +6,9 @@
  * CheMingjun @2019
  * mybricks@126.com
  */
-import moduleDef from './module/com.json'
-import moduleRT from './module/runtime'
-import moduleEdt from './module/editors'
+// import moduleDef from './module/com.json'
+// import moduleRT from './module/runtime'
+// import moduleEdt from './module/editors'
 
 import selectionDef from './selection/com.json'
 import selectionRT from './selection/runtime'
@@ -19,10 +19,10 @@ import scenesData from './_scenes/data.json'
 import scenesRT from './_scenes/runtime'
 import scenesEditors from './_scenes/editors'
 
-import definedComDef from './defined-com/com.json'
-import definedComData from './defined-com/data.json'
-import definedComRT from './defined-com/runtime'
-import definedComEdt from './defined-com/editors'
+import moduleComDef from './module/com.json'
+import moduleComData from './module/data.json'
+import moduleComRT from './module/runtime'
+import moduleComEdt from './module/editors'
 
 import frameInputDef from './frame-input/com.json'
 import frameInputEditors from './frame-input/editors'
@@ -90,10 +90,10 @@ const lib = {
       editors: scenesEditors
     }),
     merge({
-      comDef: definedComDef,
-      data: definedComData,
-      rt: definedComRT,
-      editors: definedComEdt
+      comDef: moduleComDef,
+      data: moduleComData,
+      rt: moduleComRT,
+      editors: moduleComEdt
     }),
     merge({
       comDef: frameInputDef,

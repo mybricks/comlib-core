@@ -1,10 +1,10 @@
 {
-  "title": "自定义组件",
-  "namespace": "mybricks.core-comlib.defined-com",
+  "title": "模块",
+  "namespace": "mybricks.core-comlib.module",
   "author": "CheMingjun",
   "author_name": "车明君",
   "version": "1.0.0",
-  "description": "自定义组件",
+  "description": "子模块",
   "icon": "./icon.png",
   "data": "./data.json",
   "runtime": "./runtime.ts",
