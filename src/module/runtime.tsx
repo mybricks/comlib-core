@@ -12,7 +12,7 @@ export default function ({ env, data, inputs: propsInputs, outputs: propsOutputs
   const render = useMemo(() => {
     const json = env.getModuleJSON(data.definedId)
 
-    return env.renderCom(json, {
+    return env.renderModule(json, {
       ref(refs) {
         if (env.runtime) {
           const { inputs, outputs } = json
