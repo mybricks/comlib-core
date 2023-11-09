@@ -10,6 +10,15 @@ import {useMemo, useRef} from 'react'
 
 export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}) {
   const _refs = useRef()
+
+  useMemo(() => {
+    if (_refs.current) {
+      const configs = data.configs
+      for (let id in configs) {
+        _refs.current.inputs[id](configs[id])
+      }
+    }
+  }, [{...data.configs}])
   
   const render = useMemo(() => {
     const json = env.getModuleJSON(data.definedId)
@@ -30,6 +39,14 @@ export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}
           outputs.forEach(({id}) => {
             refs.outputs(id, propsOutputs[id]);
           })
+
+          const { configs } = data;
+
+          if (configs) {
+            Object.entries(configs).forEach(([key, value]) => {
+              refs.inputs[key](value)
+            })
+          }
         }
         
         refs.run()
@@ -38,15 +55,6 @@ export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}
       disableAutoRun: true
     })
   }, [])
-  
-  useMemo(() => {
-    if (_refs.current) {
-      const configs = data.configs
-      for (let id in configs) {
-        _refs.current.inputs[id](configs[id])
-      }
-    }
-  }, [{...data.configs}, _refs.current])
   
   return render
 }
