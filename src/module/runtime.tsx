@@ -6,26 +6,17 @@
  * CheMingjun @2019
  * mybricks@126.com
  */
-import {useMemo, useRef} from 'react'
+import {useMemo, useRef, useState} from 'react'
 
 export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}) {
-  const _refs = useRef()
-
-  useMemo(() => {
-    if (_refs.current) {
-      const configs = data.configs
-      for (let id in configs) {
-        _refs.current.inputs[id](configs[id])
-      }
-    }
-  }, [{...data.configs}])
+  const [refs,setRefs] = useState()
   
   const render = useMemo(() => {
     const json = env.getModuleJSON(data.definedId)
     
     return env.renderModule(json, {
       ref(refs) {
-        _refs.current = refs
+        setRefs(refs)
         
         if (env.runtime) {
           const {inputs, outputs} = json
@@ -39,14 +30,6 @@ export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}
           outputs.forEach(({id}) => {
             refs.outputs(id, propsOutputs[id]);
           })
-
-          const { configs } = data;
-
-          if (configs) {
-            Object.entries(configs).forEach(([key, value]) => {
-              refs.inputs[key](value)
-            })
-          }
         }
         
         refs.run()
@@ -55,6 +38,15 @@ export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}
       disableAutoRun: true
     })
   }, [])
+  
+  useMemo(() => {
+    if (refs) {
+      const configs = data.configs
+      for (let id in configs) {
+        refs.inputs[id](configs[id])
+      }
+    }
+  }, [{...data.configs}, refs])
   
   return render
 }
