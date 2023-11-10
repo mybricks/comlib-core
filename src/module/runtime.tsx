@@ -42,11 +42,14 @@ export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}
   useMemo(() => {
     if (refs) {
       const configs = data.configs
+      
+      console.log(configs)
+      
       for (let id in configs) {
         refs.inputs[id](configs[id])
       }
     }
-  }, [{...data.configs}, refs])
+  }, [data.configs, refs])
   
   return render
 }
