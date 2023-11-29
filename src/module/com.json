@@ -7,6 +7,6 @@
   "description": "模块",
   "icon": "./icon.png",
   "data": "./data.json",
-  "runtime": "./runtime.ts",
+  "runtime": "./runtime.tsx",
   "editors": "./editors.ts"
 }

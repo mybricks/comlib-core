@@ -20,7 +20,7 @@ import frameInputRt from './frame-input/runtime';
 import _scenesDef from './_scenes/com.json'
 import _scenesRt from './_scenes/runtime'
 import moduleDef from './module/com.json'
-import moduleRt from './module/runtime'
+import moduleRt from './module/runtime.fn'
 
 
 const lib = {

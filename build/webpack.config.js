@@ -11,7 +11,10 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: {'mybricks.core-comlib': './src/runtime.ts'},
+  entry: {
+    'index': './src/runtime.ts',
+    'fn': './src/runtime.fn.ts'
+  },
   //devtool: 'cheap-module-source-map',
   //devtool:'cheap-module-eval-source-map',
   module: {
@@ -96,7 +99,7 @@ module.exports = {
   }],
   output: {
     globalObject: 'this',
-    filename: 'index.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, '../'),
     libraryTarget: 'umd',
     library: '[name]'

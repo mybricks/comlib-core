@@ -6,7 +6,7 @@
  * CheMingjun @2019
  * mybricks@126.com
  */
-import {useMemo, useRef, useState} from 'react'
+import {useMemo, useState} from 'react'
 
 export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}) {
   const [refs,setRefs] = useState()
