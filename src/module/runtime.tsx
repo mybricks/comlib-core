@@ -20,6 +20,11 @@ export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}
         
         if (env.runtime) {
           const {inputs, outputs} = json
+          const configs = data.configs
+      
+          for (let id in configs) {
+            refs.inputs[id](configs[id])
+          }
           
           inputs.forEach(({id}) => {
             propsInputs[id]((value) => {
@@ -40,10 +45,8 @@ export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}
   }, [])
   
   useMemo(() => {
-    if (refs) {
+    if (refs && env.edit) {
       const configs = data.configs
-      
-      console.log(configs)
       
       for (let id in configs) {
         refs.inputs[id](configs[id])
