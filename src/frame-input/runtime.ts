@@ -6,13 +6,18 @@
  * CheMingjun @2019
  * mybricks@126.com
  */
-import React, {useCallback, useMemo} from "react";
-import css from './runtime.less'
 
 export default function FrameInput({env, data, inputs, outputs}) {
   if (env.runtime) {
     inputs['getCurValue']((val, relOutpus) => {
-      relOutpus['return'](val)
+      let clonedVal
+      if (val && typeof val === 'object') {
+        clonedVal = JSON.parse(JSON.stringify(val))//防止后续数据修改
+      } else {
+        clonedVal = val
+      }
+      
+      relOutpus['return'](clonedVal)
     })
   }
 }
