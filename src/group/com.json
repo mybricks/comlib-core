@@ -1,0 +1,17 @@
+{
+  "title": "组",
+  "namespace": "mybricks.core-comlib.group",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "组",
+  "runtime": "./runtime.tsx",
+  "editors": "./editors.ts",
+  "slots": [
+    {
+      "title": "内容",
+      "id": "content",
+      "layout": "smart"
+    }
+  ]
+}

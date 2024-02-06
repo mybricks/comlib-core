@@ -10,6 +10,10 @@
 // import moduleRT from './module/runtime'
 // import moduleEdt from './module/editors'
 
+import groupDef from './group/com.json'
+import groupRT from './group/runtime'
+import groupEditors from './group/editors'
+
 import selectionDef from './selection/com.json'
 import selectionRT from './selection/runtime'
 import selectionEditors from './selection/editors'
@@ -78,6 +82,11 @@ const lib = {
     //   rt: popupRt,
     //   editors: popupEditors
     // }),
+    merge({
+      comDef: groupDef,
+      rt: groupRT,
+      editors: groupEditors
+    }),
     merge({
       comDef: selectionDef,
       rt: selectionRT,
