@@ -21,6 +21,8 @@ import _scenesDef from './_scenes/com.json'
 import _scenesRt from './_scenes/runtime'
 import moduleDef from './module/com.json'
 import moduleRt from './module/runtime'
+import groupDef from './group/com.json'
+import groupRt from './group/runtime'
 
 
 const lib = {
@@ -57,6 +59,10 @@ const lib = {
     merge({
       comDef: moduleDef,
       rt: moduleRt
+    }),
+    merge({
+      comDef: groupDef,
+      rt: groupRt
     })
   ]
 }
