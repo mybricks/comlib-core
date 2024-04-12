@@ -1,6 +1,18 @@
-export default function ({slots}) {
+import {useCallback} from "react";
+
+export default function ({slots, outputs}) {
+  const click = useCallback(() => {
+    outputs.click()
+  }, [])
+  
+  const dblClick = useCallback(() => {
+    outputs.dbClick()
+  }, [])
+  
   return (
-    <div style={{width: '100%', height: '100%', overflow: 'visible'}}>
+    <div style={{width: '100%', height: '100%', overflow: 'visible'}}
+         onClick={click}
+         onDoubleClick={dblClick}>
       {slots.content.render()}
     </div>
   )

@@ -3,6 +3,9 @@ export default {
     style.width = '100%'
     style.height = '100%'
   },
+  // '@debugAsProto'({style,data,inputs,outputs}){
+  //
+  // },
   ':root': {},
   '[data-title]': {
     title: '标题',

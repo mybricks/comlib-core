@@ -6,5 +6,10 @@
   "version": "1.0.0",
   "description": "选区",
   "runtime": "./runtime.tsx",
-  "editors": "./editors.ts"
+  "editors": "./editors.ts",
+  "slots": [
+    {
+      "id": "content"
+    }
+  ]
 }

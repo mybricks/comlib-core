@@ -13,5 +13,21 @@
       "id": "content",
       "layout": "smart"
     }
+  ],
+  "outputs": [
+    {
+      "id": "click",
+      "title": "单击",
+      "schema": {
+        "type": "number"
+      }
+    },
+    {
+      "id": "dbClick",
+      "title": "双击",
+      "schema": {
+        "type": "number"
+      }
+    }
   ]
 }
