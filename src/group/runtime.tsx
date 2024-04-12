@@ -6,7 +6,7 @@ export default function ({slots, outputs}) {
   }, [])
   
   const dblClick = useCallback(() => {
-    outputs.dbClick()
+    outputs.dblClick()
   }, [])
   
   return (

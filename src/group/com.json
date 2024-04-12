@@ -23,7 +23,7 @@
       }
     },
     {
-      "id": "dbClick",
+      "id": "dblClick",
       "title": "双击",
       "schema": {
         "type": "number"
