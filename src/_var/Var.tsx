@@ -28,12 +28,15 @@ export default function ({env, data, outputs, inputs, _notifyBindings}) {
 }
 
 function clone(val) {
-  if (val && typeof val === 'object') {
+  if (val) {
     try {
-      if (val instanceof FormData) {
-        return val
+      const type = Object.prototype.toString.call(val);
+
+      if (['[object Object]', '[object Array]'].includes(type)) {
+        return JSON.parse(JSON.stringify(val))
       }
-      return JSON.parse(JSON.stringify(val))
+
+      return val
     } catch (ex) {
       return val
     }
