@@ -8,8 +8,8 @@
  */
 import {useMemo, useState} from 'react'
 
-export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}) {
-  const [refs,setRefs] = useState()
+export default function ({env, data, style, inputs: propsInputs, outputs: propsOutputs}) {
+  const [refs, setRefs] = useState()
   
   const render = useMemo(() => {
     const json = env.getModuleJSON(data.definedId)
@@ -18,10 +18,21 @@ export default function ({env, data, inputs: propsInputs, outputs: propsOutputs}
       ref(refs) {
         setRefs(refs)
         
+        if (env.edit) {
+          const refStyle = refs.style
+          if (refStyle) {
+            style.widthAuto = refStyle.widthAuto
+            style.widthFull = refStyle.widthFull
+            
+            style.heightAuto = refStyle.heightAuto
+            style.heightFull = refStyle.heightFull
+          }
+        }
+        
         if (env.runtime) {
           const {inputs, outputs} = json
           const configs = data.configs
-      
+          
           for (let id in configs) {
             refs.inputs[id](configs[id])
           }
