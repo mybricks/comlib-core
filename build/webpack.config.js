@@ -12,7 +12,7 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
-    'index': './src/runtime.ts',
+    'index': './src/npm.ts',
     'fn': './src/runtime.fn.ts'
   },
   //devtool: 'cheap-module-source-map',
