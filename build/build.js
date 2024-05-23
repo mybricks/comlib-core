@@ -34,12 +34,11 @@ componentDirNames.forEach((componentDirName) => {
   // 默认空对象
   let data = {};
   try {
-    data = JSON.parse(fs.readFileSync(path.resolve(componentRoot, comJSON.data), 'utf-8'));
+    data = JSON.parse(fs.readFileSync(path.resolve(path.resolve(componentRoot, `./${componentDirName}`), comJSON.data), "utf-8"));
   } catch {}
   const inputs = comJSON.inputs ? comJSON.inputs.map(({ id }) => id) : [];
   const outputs = comJSON.outputs ? comJSON.outputs.map(({ id }) => id) : [];
   const isJS = comJSON.rtType?.match(/^js/gi);
-
 
   comArayCode = comArayCode + `
   {
