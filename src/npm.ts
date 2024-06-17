@@ -70,7 +70,7 @@ export default {
     runtime: Module0,
     data: {},
     inputs: ["show","hide","showOrHide"],
-    outputs: []
+    outputs: ["click"]
   },
   {
     namespace: "mybricks.core-comlib.group",
