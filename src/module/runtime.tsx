@@ -51,7 +51,8 @@ export default function ({env, data, style, inputs: propsInputs, outputs: propsO
         refs.run()
       },
       /** 禁止主动触发IO、执行自执行计算组件 */
-      disableAutoRun: true
+      disableAutoRun: true,
+      outputs:propsOutputs
     })
   }, [])
   
