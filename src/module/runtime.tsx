@@ -14,7 +14,7 @@ export default function ({env, data, style, inputs: propsInputs, outputs: propsO
   const render = useMemo(() => {
     const json = env.getModuleJSON(data.definedId)
     
-    return env.renderModule(json, {
+    return env.renderModule(json, {/////TODO 放大的情况下多组件对齐、slot的参考线问题
       ref(refs) {
         setRefs(refs)
         

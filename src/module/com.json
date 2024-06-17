@@ -8,5 +8,15 @@
   "icon": "./icon.png",
   "data": "./data.json",
   "runtime": "./runtime.tsx",
-  "editors": "./editors.ts"
+  "editors": "./editors.ts",
+  "outputs": [
+    {
+      "id": "click",
+      "title": "单击",
+      "description": "点击模块触发的事件",
+      "schema": {
+        "type": "any"
+      }
+    }
+  ]
 }

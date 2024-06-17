@@ -10,7 +10,10 @@ export default function ({slots, outputs}) {
   }, [])
   
   return (
-    <div style={{width: '100%', height: '100%', overflow: 'visible'}}
+    <div style={{
+      width: '100%', height: '100%'
+      //, overflow: 'visible'
+    }}
          onClick={click}
          onDoubleClick={dblClick}>
       {slots.content.render()}
