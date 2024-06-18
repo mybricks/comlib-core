@@ -30,21 +30,42 @@ export default function ({env, data, style, inputs: propsInputs, outputs: propsO
         }
         
         if (env.runtime) {
-          const {inputs, outputs} = json
+          const { inputs, outputs, pinRels } = json
+          const inputNextIdMap = {}
+          const relOutputIdMap = {}
+
+          Object.entries(pinRels).forEach(([inputId, relOuputId]) => {
+            const id = inputId.split("_rootFrame_-")[1]
+            if (id) {
+              // 输入关联输出
+              const outputId = relOuputId[0]
+              inputNextIdMap[id] = outputId
+              relOutputIdMap[outputId] = true
+            }
+          })
+
           const configs = data.configs
           
           for (let id in configs) {
             refs.inputs[id](configs[id])
           }
-          
-          inputs.forEach(({id}) => {
-            propsInputs[id]((value) => {
-              refs.inputs[id](value)
-            })
+
+          outputs.forEach(({id}) => {
+            if (!relOutputIdMap[id]) {
+              refs.outputs(id, propsOutputs[id]);
+            }
           })
           
-          outputs.forEach(({id}) => {
-            refs.outputs(id, propsOutputs[id]);
+          inputs.forEach(({id}) => {
+            propsInputs[id]((value, relOutputs) => {
+              const outputId = inputNextIdMap[id];
+              if (outputId) {
+                refs.outputs(outputId, (value) => {
+                  relOutputs[outputId](value)
+                })
+              }
+              refs.inputs[id](value);
+            })
           })
         }
         
