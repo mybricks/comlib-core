@@ -86,6 +86,6 @@ export default function ({env, data, style, inputs: propsInputs, outputs: propsO
       }
     }
   }, [data.configs, refs])
-  
+
   return render
 }

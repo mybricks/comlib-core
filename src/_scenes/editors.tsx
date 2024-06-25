@@ -8,6 +8,10 @@
  */
 const allTypes = [
   {
+    label: '无',
+    value: 'none'
+  },
+  {
     label: '新页面',
     value: 'blank'
   },
@@ -33,7 +37,7 @@ export default {
       },
       value: {
         get({data, input, output}) {
-          return data.openType || 'blank'
+          return data.openType || 'none'
         },
         set({data, setDesc}, val) {
           data.openType = val
