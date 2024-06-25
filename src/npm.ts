@@ -60,7 +60,7 @@ export default {
     namespace: "mybricks.core-comlib.scenes",
     version: "1.0.0",
     runtime: scenes0,
-    data: {"_sceneId":null,"_sceneShowType":null,"openType":"blank"},
+    data: {"_sceneId":null,"_sceneShowType":null,"openType":"none"},
     inputs: ["open"],
     outputs: []
   },
