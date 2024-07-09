@@ -39,6 +39,9 @@ import frameOutputRt from './frame-output/runtime'
 import fnDef from './fn/com.json'
 import Fn from './fn/Fn'
 
+import serviceDef from './service/com.json'
+import Service from './service/Service'
+
 import varDef from './_var/com.json'
 import VarData from './_var/data.json'
 import Var from './_var/Var'
@@ -117,6 +120,10 @@ const lib = {
     merge({
       comDef: fnDef,
       rt: Fn
+    }),
+    merge({
+      comDef: serviceDef,
+      rt: Service
     }),
     merge({
       comDef: varDef,

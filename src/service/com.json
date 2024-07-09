@@ -1,0 +1,12 @@
+{
+  "title": "服务Fx",
+  "namespace": "mybricks.core-comlib.service",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "服务Fx",
+  "icon": "./icon.png",
+  "runtime": "./Service.tsx",
+  "rtType": "js",
+  "visibility": false
+}
