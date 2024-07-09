@@ -7,6 +7,7 @@ import frameInput0 from "./frame-input/runtime"
 import scenes0 from "./_scenes/runtime"
 import Module0 from "./module/runtime"
 import Group0 from "./group/runtime"
+import service0 from "./service/Service"
 
 export default {
   id: 'mybricks-core-comlib',
@@ -60,7 +61,7 @@ export default {
     namespace: "mybricks.core-comlib.scenes",
     version: "1.0.0",
     runtime: scenes0,
-    data: {"_sceneId":null,"_sceneShowType":null,"openType":"none"},
+    data: {"_sceneId":null,"_sceneShowType":null,"openType":"blank"},
     inputs: ["open"],
     outputs: []
   },
@@ -79,6 +80,14 @@ export default {
     data: {},
     inputs: ["show","hide","showOrHide"],
     outputs: ["click","dblClick"]
+  },
+  {
+    namespace: "mybricks.core-comlib.service",
+    version: "1.0.0",
+    runtime: service0,
+    data: {},
+    inputs: [],
+    outputs: []
   },
   ]
 }
