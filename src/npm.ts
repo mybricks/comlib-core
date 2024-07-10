@@ -8,6 +8,7 @@ import scenes0 from "./_scenes/runtime"
 import Module0 from "./module/runtime"
 import Group0 from "./group/runtime"
 import service0 from "./service/Service"
+import frameOutput0 from "./frame-output/runtime"
 
 export default {
   id: 'mybricks-core-comlib',
@@ -87,6 +88,14 @@ export default {
     runtime: service0,
     data: {},
     inputs: [],
+    outputs: []
+  },
+  {
+    namespace: "mybricks.core-comlib.frame-output",
+    version: "1.0.0",
+    runtime: frameOutput0,
+    data: {},
+    inputs: ["output"],
     outputs: []
   },
   ]
