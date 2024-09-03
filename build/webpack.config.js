@@ -10,6 +10,7 @@
 const path = require('path');
 
 module.exports = {
+  target: ["web", "es5"],
   mode: 'production',
   entry: {
     'index': './src/npm.ts',
@@ -29,7 +30,7 @@ module.exports = {
               transpileOnly: true,
               compilerOptions: {
                 module: 'es6',
-                target: 'es6'
+                target: 'es5'
               }
             }
           }
