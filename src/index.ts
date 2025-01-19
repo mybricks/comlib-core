@@ -55,6 +55,10 @@ import connectorDef from './_connector/com.json'
 import connectorRt from './_connector/runtime'
 import connectorEditors from './_connector/editors'
 
+import aiJSDef from './ai-js/com.json'
+import aiJSRt from './ai-js/runtime'
+import aiJSEditors from './ai-js/editors'
+
 import popupDef from './popup/com.json'
 import popupRt from './popup/runtime'
 import popupData from './popup/data.json'
@@ -66,11 +70,13 @@ import layoutRtEdt from './layout/edit/runtime'
 import layoutData from './layout/data.json'
 import layoutEditors from './layout/edit/editors'
 import {Logo} from './layout/Icons'
+import {AIJX, AIJXBase64} from "./Icons";
 
 //import frameOutputDef from './frame-output/com.json'
 
 
 // import {T_XGraphComDef} from "@sdk";
+
 
 const lib = {
   id: '@mybricks/comlib-core',
@@ -85,6 +91,12 @@ const lib = {
     //   rt: popupRt,
     //   editors: popupEditors
     // }),
+    merge({
+      comDef: aiJSDef,
+      rt: aiJSRt,
+      editors: aiJSEditors,
+      icon: AIJXBase64
+    }),
     merge({
       comDef: groupDef,
       rt: groupRT,
