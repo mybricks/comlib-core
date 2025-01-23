@@ -9,6 +9,7 @@ import Module0 from "./module/runtime"
 import Group0 from "./group/runtime"
 import service0 from "./service/Service"
 import frameOutput0 from "./frame-output/runtime"
+import jsAi0 from "./ai-js/runtime"
 
 export default {
   id: 'mybricks-core-comlib',
@@ -97,6 +98,14 @@ export default {
     data: {},
     inputs: ["output"],
     outputs: []
+  },
+  {
+    namespace: "mybricks.core-comlib.js-ai",
+    version: "1.0.0",
+    runtime: jsAi0,
+    data: {},
+    inputs: ["input"],
+    outputs: ["output0"]
   },
   ]
 }

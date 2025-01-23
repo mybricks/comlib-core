@@ -25,6 +25,8 @@ import moduleRt from './module/runtime.fn'
 // import groupRt from './group/runtime'
 import serviceDef from "./service/com.json"
 import serviceRt from "./service/Service";
+import aijsDef from "./ai-js/com.json";
+import aijsRt from "./ai-js/runtime";
 
 
 const lib = {
@@ -69,7 +71,11 @@ const lib = {
     merge({
       comDef: serviceDef,
       rt: serviceRt
-    })
+    }),
+    merge({
+      comDef: aijsDef,
+      rt: aijsRt
+    }),
   ]
 }
 
