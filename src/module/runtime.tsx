@@ -8,7 +8,7 @@
  */
 import {useMemo, useState} from 'react'
 
-export default function ({id, env, data, style, inputs: propsInputs, outputs: propsOutputs}) {
+export default function ({id, _id, env, data, style, inputs: propsInputs, outputs: propsOutputs}) {
   const [refs, setRefs] = useState()
   
   const render = useMemo(() => {
@@ -74,7 +74,8 @@ export default function ({id, env, data, style, inputs: propsInputs, outputs: pr
       /** 禁止主动触发IO、执行自执行计算组件 */
       disableAutoRun: true,
       outputs:propsOutputs,
-      rootId: id,
+      // rootId: id,
+      rootId: _id,
     })
   }, [])
   
