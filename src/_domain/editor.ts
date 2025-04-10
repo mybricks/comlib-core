@@ -425,13 +425,18 @@ export default {
   ':root': [
     {
       title: "领域模型选择",
-      type: "select",
-      options: domain.getModelOptions(),
+      type: "_domainModelSelect",
+      //options: domain.getModelOptions(),
       value: {
         get({ data }) {
           return data.modelId;
         },
-        set({ data, setDesc }, modelId) {
+        set({ data, setDesc }, {id,service}) {
+          debugger
+
+
+          const {name,title,params,returnType} = service////TODO
+
           data.modelId = modelId;
           const defaultServiceName = domain.getDefaultServiceNameByModelId(modelId);
           data.serviceName = defaultServiceName;

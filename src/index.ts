@@ -59,6 +59,10 @@ import aiJSDef from './ai-js/com.json'
 import aiJSRt from './ai-js/runtime'
 import aiJSEditors from './ai-js/editors'
 
+import domainDef from './_domain/com.json'
+import domainRt from './_domain/runtime'
+import domainEditors from './_domain/editor'
+
 import popupDef from './popup/com.json'
 import popupRt from './popup/runtime'
 import popupData from './popup/data.json'
@@ -91,6 +95,11 @@ const lib = {
     //   rt: popupRt,
     //   editors: popupEditors
     // }),
+    merge({
+      comDef: domainDef,
+      rt: domainRt,
+      editors: domainEditors
+    }),
     merge({
       comDef: aiJSDef,
       rt: aiJSRt,

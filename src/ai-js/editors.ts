@@ -57,47 +57,47 @@ export default {
     data.extraLib = await genLibTypes(schemaList)
   },
   ':root': [
-    {
-      title: '添加输入项',
-      type: 'Button',
-      ifVisible({data}) {
-        return !data.runImmediate;
-      },
-      value: {
-        set({input}) {
-          const idx = getIoOrder(input);
-          const hostId = `input.inputValue${idx}`;
-          const title = `参数${idx}`;
-          input.add({
-            id: hostId,
-            title,
-            schema: {type: 'follow'},
-            deletable: true,
-            editable: true
-          });
-        }
-      }
-    },
-    {
-      title: '添加输出项',
-      type: 'Button',
-      value: {
-        set({output}) {
-          const idx = getIoOrder(output);
-          const hostId = `output${idx}`;
-          const title = `输出项${idx}`;
-          output.add({
-            id: hostId,
-            title,
-            schema: {
-              type: 'unknown'
-            },
-            editable: true,
-            deletable: true
-          });
-        }
-      }
-    },
+    // {
+    //   title: '添加输入项',
+    //   type: 'Button',
+    //   ifVisible({data}) {
+    //     return !data.runImmediate;
+    //   },
+    //   value: {
+    //     set({input}) {
+    //       const idx = getIoOrder(input);
+    //       const hostId = `input.inputValue${idx}`;
+    //       const title = `参数${idx}`;
+    //       input.add({
+    //         id: hostId,
+    //         title,
+    //         schema: {type: 'follow'},
+    //         deletable: true,
+    //         editable: true
+    //       });
+    //     }
+    //   }
+    // },
+    // {
+    //   title: '添加输出项',
+    //   type: 'Button',
+    //   value: {
+    //     set({output}) {
+    //       const idx = getIoOrder(output);
+    //       const hostId = `output${idx}`;
+    //       const title = `输出项${idx}`;
+    //       output.add({
+    //         id: hostId,
+    //         title,
+    //         schema: {
+    //           type: 'unknown'
+    //         },
+    //         editable: true,
+    //         deletable: true
+    //       });
+    //     }
+    //   }
+    // },
     {
       type: 'code',
       options: ({data, output}) => {

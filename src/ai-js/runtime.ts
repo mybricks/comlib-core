@@ -2,7 +2,7 @@ import { runJs } from './com-utils';
 import { Data } from './constants';
 import { convertObject2Array } from './util';
 
-export default function ({ env, data, inputs, outputs, logger, onError }: RuntimeParams<Data>) {
+export default function ({ env, data, inputs, outputs, logger, onError }) {
   const { fns, runImmediate } = data;
 
   const runJSParams = {
