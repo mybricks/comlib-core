@@ -1,16 +1,32 @@
 export default function ({ env, data, inputs }) {
   inputs["call"]((value, relOutputs) => {
     console.log("_domain data => ", data);
-    const result = env.callDomainModel(data.modelId, data.serviceName, value);
 
-    if (typeof result === "string") {
-      relOutputs["catch"](result)
-    } else {
-      result.then((data) => {
-        relOutputs["then"](data);
-      }).catch((error) => {
-        relOutputs["catch"](error);
-      })
+    if (!data.model) {
+      relOutputs["catch"]("没有选择领域模型");
+      return;
     }
+
+    // 临时测试
+    env.callDomainModel({
+      // 模型信息
+      model: {
+        // 模型ID
+        modelId: data.model.id,
+        // 服务名称
+        serviceName: data.model.service.name,
+      },
+      // 参数
+      params: value,
+      configs: {
+        callType: "call", // "register"
+      }
+    }, (error, output) => {
+      if (error) {
+        relOutputs["catch"](error);
+      } else {
+        relOutputs["then"](output);
+      }
+    });
   });
 };

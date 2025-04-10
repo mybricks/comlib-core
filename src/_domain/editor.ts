@@ -429,18 +429,22 @@ export default {
       //options: domain.getModelOptions(),
       value: {
         get({ data }) {
-          return data.modelId;
+          // return data.modelId;
+          return data.model;
         },
-        set({ data, setDesc }, {id,service}) {
-          debugger
+        set({ data, setDesc }, model) {
+          console.log("value => ", model);
+          // debugger
+          data.model = model;
+          
 
 
-          const {name,title,params,returnType} = service////TODO
+          // const {name,title,params,returnType} = service////TODO
 
-          data.modelId = modelId;
-          const defaultServiceName = domain.getDefaultServiceNameByModelId(modelId);
-          data.serviceName = defaultServiceName;
-          const model = domain.getModel(modelId)
+          // data.modelId = modelId;
+          // const defaultServiceName = domain.getDefaultServiceNameByModelId(modelId);
+          // data.serviceName = defaultServiceName;
+          // const model = domain.getModel(modelId)
           setDesc(`已选择：${model.title}`);
         },
       },
