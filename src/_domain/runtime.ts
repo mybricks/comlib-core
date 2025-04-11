@@ -1,7 +1,5 @@
 export default function ({ env, data, inputs }) {
   inputs["call"]((value, relOutputs) => {
-    console.log("_domain data => ", data);
-
     if (!data.model) {
       relOutputs["catch"]("没有选择领域模型");
       return;
@@ -10,16 +8,11 @@ export default function ({ env, data, inputs }) {
     // 临时测试
     env.callDomainModel({
       // 模型信息
-      model: {
-        // 模型ID
-        modelId: data.model.id,
-        // 服务名称
-        serviceName: data.model.service.name,
-      },
+      model: data.model,
       // 参数
       params: value,
       configs: {
-        callType: "call", // "register"
+        callType: "call",
       }
     }, (error, output) => {
       if (error) {
