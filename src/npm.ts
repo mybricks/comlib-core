@@ -10,6 +10,7 @@ import Group0 from "./group/runtime"
 import service0 from "./service/Service"
 import frameOutput0 from "./frame-output/runtime"
 import jsAi0 from "./ai-js/runtime"
+import domain0 from "./_domain/runtime"
 
 export default {
   id: 'mybricks-core-comlib',
@@ -106,6 +107,14 @@ export default {
     data: {},
     inputs: ["input"],
     outputs: ["output0"]
+  },
+  {
+    namespace: "mybricks.core-comlib.domain",
+    version: "1.0.0",
+    runtime: domain0,
+    data: {},
+    inputs: ["call"],
+    outputs: ["then","catch"]
   },
   ]
 }

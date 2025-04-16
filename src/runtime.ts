@@ -25,6 +25,8 @@ import groupDef from './group/com.json'
 import groupRt from './group/runtime'
 import serviceDef from "./service/com.json"
 import serviceRt from "./service/Service";
+import domainDef from "./_domain/com.json";
+import domainRt from "./_domain/runtime";
 
 
 const lib = {
@@ -69,7 +71,11 @@ const lib = {
     merge({
       comDef: serviceDef,
       rt: serviceRt
-    })
+    }),
+    merge({
+      comDef: domainDef,
+      rt: domainRt
+    }),
   ]
 }
 

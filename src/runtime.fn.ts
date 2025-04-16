@@ -27,6 +27,8 @@ import serviceDef from "./service/com.json"
 import serviceRt from "./service/Service";
 import aijsDef from "./ai-js/com.json";
 import aijsRt from "./ai-js/runtime";
+import domainDef from "./_domain/com.json";
+import domainRt from "./_domain/runtime";
 
 
 const lib = {
@@ -75,6 +77,10 @@ const lib = {
     merge({
       comDef: aijsDef,
       rt: aijsRt
+    }),
+    merge({
+      comDef: domainDef,
+      rt: domainRt
     }),
   ]
 }

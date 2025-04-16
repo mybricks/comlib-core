@@ -5,6 +5,11 @@ export default function ({ env, data, inputs }) {
       return;
     }
 
+    if (!env.callDomainModel) {
+      relOutputs["catch"]("未实现env.callDomainModel");
+      return;
+    }
+
     // 临时测试
     env.callDomainModel({
       // 模型信息
@@ -14,7 +19,10 @@ export default function ({ env, data, inputs }) {
       configs: {
         callType: "call",
       }
-    }, (error, output) => {
+    }, (error, loading, output) => {
+      if (loading) {
+        return
+      }
       if (error) {
         relOutputs["catch"](error);
       } else {
