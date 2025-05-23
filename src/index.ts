@@ -84,7 +84,7 @@ import {AIJX, AIJXBase64} from "./Icons";
 
 const lib = {
   id: '@mybricks/comlib-core',
-  title: 'Mybricks基础组件库',
+  title: 'MyBricks基础组件库',
   author: 'CheMingjun',
   icon: '',
   version: '1.0.1',

@@ -12,7 +12,16 @@
   "inputs": [
     {
       "id": "output",
-      "title": "输出",
+      "title": "调用",
+      "schema": {
+        "type": "any"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "id": "result",
+      "title": "结果",
       "schema": {
         "type": "any"
       }
