@@ -1,0 +1,44 @@
+{
+  "title": "总线:获取登录用户",
+  "namespace": "mybricks.core-comlib.bus-getUser",
+  "author": "MyBridks",
+  "author_name": "MyBridks",
+  "version": "1.0.0",
+  "description": "在应用总线中获取当前登录用户信息",
+  "rtType": "js",
+  "data": "./data.json",
+  "runtime": "./runtime.ts",
+  "editors": "./editor.ts",
+  "inputs": [
+    {
+      "id": "call",
+      "rels": [
+        "then",
+        "catch"
+      ],
+      "title": "调用",
+      "desc": "调用对应领域模型",
+      "schema": {
+        "type": "object"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "id": "then",
+      "title": "结果",
+      "desc": "成功时，领域模型返回信息",
+      "schema": {
+        "type": "unknown"
+      }
+    },
+    {
+      "id": "catch",
+      "title": "发生错误",
+      "desc": "发生错误时，领域模型返回信息",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ]
+}

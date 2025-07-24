@@ -76,6 +76,10 @@ import layoutEditors from './layout/edit/editors'
 import {Logo} from './layout/Icons'
 import {AIJX, AIJXBase64} from "./Icons";
 
+import busUserDef from './_bus-user/com.json'
+import busUserRt from './_bus-user/runtime'
+import busUserEditors from './_bus-user/editor'
+
 //import frameOutputDef from './frame-output/com.json'
 
 
@@ -96,10 +100,15 @@ const lib = {
     //   editors: popupEditors
     // }),
     merge({
-      comDef: domainDef,
-      rt: domainRt,
-      editors: domainEditors
+      comDef: busUserDef,
+      rt: busUserRt,
+      editors: busUserEditors
     }),
+    // merge({
+    //   comDef: domainDef,
+    //   rt: domainRt,
+    //   editors: domainEditors
+    // }),
     merge({
       comDef: aiJSDef,
       rt: aiJSRt,

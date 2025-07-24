@@ -1,5 +1,5 @@
 {
-  "title": "模块",
+  "title": "区块",
   "namespace": "mybricks.core-comlib.module",
   "author": "CheMingjun",
   "author_name": "车明君",
@@ -13,7 +13,7 @@
     {
       "id": "click",
       "title": "单击",
-      "description": "点击模块触发的事件",
+      "description": "点击区块触发的事件",
       "schema": {
         "type": "any"
       }
