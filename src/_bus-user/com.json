@@ -1,13 +1,14 @@
 {
   "title": "总线:获取登录用户",
   "namespace": "mybricks.core-comlib.bus-getUser",
-  "author": "MyBridks",
-  "author_name": "MyBridks",
+  "author": "MyBricks",
+  "author_name": "MyBricks",
   "version": "1.0.0",
   "description": "在应用总线中获取当前登录用户信息",
   "rtType": "js",
   "data": "./data.json",
   "runtime": "./runtime.ts",
+  "icon": "./icon.svg",
   "editors": "./editor.ts",
   "inputs": [
     {
@@ -17,9 +18,9 @@
         "catch"
       ],
       "title": "调用",
-      "desc": "调用对应领域模型",
+      "desc": "从总线中获取信息",
       "schema": {
-        "type": "object"
+        "type": "follow"
       }
     }
   ],
@@ -27,15 +28,58 @@
     {
       "id": "then",
       "title": "结果",
-      "desc": "成功时，领域模型返回信息",
+      "desc": "成功时，返回时用户信息",
       "schema": {
-        "type": "unknown"
+        "title": "用户登录信息",
+        "type": "object",
+        "properties": {
+          "uid": {
+            "title": "用户ID",
+            "description": "用户唯一标识",
+            "type": "string"
+          },
+          "username": {
+            "title": "用户名",
+            "description": "登录用户名",
+            "type": "string"
+          },
+          "nickname": {
+            "title": "昵称",
+            "description": "用户昵称",
+            "type": "string"
+          },
+          "phone": {
+            "title": "手机号",
+            "description": "用户绑定的手机号",
+            "type": "string"
+          },
+          "avatar": {
+            "title": "头像",
+            "description": "用户头像URL",
+            "type": "string"
+          },
+          "gender": {
+            "title": "性别",
+            "description": "用户性别：0=未知，1=男，2=女",
+            "type": "number"
+          },
+          "token": {
+            "title": "登录凭证",
+            "description": "登录凭证",
+            "type": "string"
+          },
+          "email": {
+            "title": "邮箱",
+            "description": "用户绑定的邮箱地址",
+            "type": "string"
+          }
+        }
       }
     },
     {
       "id": "catch",
       "title": "发生错误",
-      "desc": "发生错误时，领域模型返回信息",
+      "desc": "发生错误时，返回的错误信息",
       "schema": {
         "type": "string"
       }
