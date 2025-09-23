@@ -1,0 +1,11 @@
+{
+  "title": "ExtEvent",
+  "namespace": "mybricks.core-comlib.ext-event",
+  "author": "CheMingjun",
+  "author_name": "车明君",
+  "version": "1.0.0",
+  "description": "扩展-事件",
+  "icon": "./icon.png",
+  "runtime": "./ExtEvent.ts",
+  "rtType": "js"
+}

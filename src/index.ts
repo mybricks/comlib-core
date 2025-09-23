@@ -42,6 +42,9 @@ import Fn from './fn/Fn'
 import serviceDef from './service/com.json'
 import Service from './service/Service'
 
+import extEventDef from './extEvent/com.json'
+import ExtEvent from './extEvent/ExtEvent'
+
 import varDef from './_var/com.json'
 import VarData from './_var/data.json'
 import Var from './_var/Var'
@@ -58,23 +61,7 @@ import connectorEditors from './_connector/editors'
 import aiJSDef from './ai-js/com.json'
 import aiJSRt from './ai-js/runtime'
 import aiJSEditors from './ai-js/editors'
-
-import domainDef from './_domain/com.json'
-import domainRt from './_domain/runtime'
-import domainEditors from './_domain/editor'
-
-import popupDef from './popup/com.json'
-import popupRt from './popup/runtime'
-import popupData from './popup/data.json'
-import popupEditors from './popup/editors'
-
-import layoutDef from './layout/com.json'
-import layoutRt from './layout/runtime'
-import layoutRtEdt from './layout/edit/runtime'
-import layoutData from './layout/data.json'
-import layoutEditors from './layout/edit/editors'
-import {Logo} from './layout/Icons'
-import {AIJX, AIJXBase64} from "./Icons";
+import {AIJXBase64} from "./Icons";
 
 import busUserDef from './_bus-user/com.json'
 import busUserRt from './_bus-user/runtime'
@@ -154,6 +141,10 @@ const lib = {
     merge({
       comDef: serviceDef,
       rt: Service
+    }),
+    merge({
+      comDef: extEventDef,
+      rt: ExtEvent
     }),
     merge({
       comDef: varDef,

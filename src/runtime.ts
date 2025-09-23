@@ -31,7 +31,7 @@ import domainRt from "./_domain/runtime";
 
 const lib = {
   id: 'mybricks-core-comlib',
-  title: 'Mybrics核心组件库',
+  title: 'MyBrics核心组件库',
   author: 'CheMingjun',
   icon: '',
   version: '1.0.1',

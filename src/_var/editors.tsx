@@ -30,27 +30,27 @@ export default {
   //     changedPin.setSchema(from.schema)//follow
   //   }
   // },
-  '@inputUpdated': ({data, input, output, setAutoRun, isAutoRun}
-    , {id, title, schema}) => {
-    if (id === 'set') {
-      const returnPin = output.get('return')
-      returnPin.setSchema(schema)//follow
-
-      const changedPin = output.get('changed')
-      changedPin.setSchema(schema)//follow
-    }
-  },
-  '@inputDisConnected': ({data, input, output, setAutoRun, isAutoRun}
-    , from: { id, title, schema, parent }
-    , to: { id, title, schema, parent }) => {
-    if (to.id === 'set') {
-      const returnPin = output.get('return')
-      returnPin.setSchema({type: 'unknown'})
-
-      const changedPin = output.get('changed')
-      changedPin.setSchema({type: 'unknown'})
-    }
-  },
+  // '@inputUpdated': ({data, input, output, setAutoRun, isAutoRun}
+  //   , {id, title, schema}) => {
+  //   if (id === 'set') {
+  //     const returnPin = output.get('return')
+  //     returnPin.setSchema(schema)//follow
+  //
+  //     const changedPin = output.get('changed')
+  //     changedPin.setSchema(schema)//follow
+  //   }
+  // },
+  // '@inputDisConnected': ({data, input, output, setAutoRun, isAutoRun}
+  //   , from: { id, title, schema, parent }
+  //   , to: { id, title, schema, parent }) => {
+  //   if (to.id === 'set') {
+  //     const returnPin = output.get('return')
+  //     returnPin.setSchema({type: 'unknown'})
+  //
+  //     const changedPin = output.get('changed')
+  //     changedPin.setSchema({type: 'unknown'})
+  //   }
+  // },
   ':root': [
     {
       title: '变量名称',
