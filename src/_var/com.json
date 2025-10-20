@@ -33,11 +33,34 @@
       ]
     },
     {
-      "id": "reset",
-      "title": "重置",
+      "id": "setTrue",
+      "title": "赋值：设为true",
       "schema": {
-        "type": "any"
-      }
+        "type": "boolean"
+      },
+      "rels": [
+        "return"
+      ]
+    },
+    {
+      "id": "setFalse",
+      "title": "赋值：设为false",
+      "schema": {
+        "type": "boolean"
+      },
+      "rels": [
+        "return"
+      ]
+    },
+    {
+      "id": "setAryAdd",
+      "title": "赋值：数组添加元素",
+      "schema": {
+        "type": "follow"
+      },
+      "rels": [
+        "return"
+      ]
     }
   ],
   "outputs": [

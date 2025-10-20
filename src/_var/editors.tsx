@@ -52,26 +52,47 @@ export default {
   //   }
   // },
   ':root': [
+    // {
+    //   title: '变量名称',
+    //   type: 'text',
+    //   value: {
+    //     get({title}) {
+    //       return title
+    //     }, set({setTitle}, title) {
+    //       setTitle(title)
+    //     }
+    //   }
+    // },
+    // null,
     {
-      title: '变量名称',
-      type: 'text',
-      value: {
-        get({title}) {
-          return title
-        }, set({setTitle}, title) {
-          setTitle(title)
-        }
-      }
-    },
-    null,
-    {
-      title: '类型',
+      title: '选择目标',
       type: '_schema',
+      options({data, connections}) {
+        let curXPath = ''
+
+        if (connections) {
+          const con0 = connections[0]
+          curXPath = con0.data.xpath || ''
+        }
+
+        return {
+          readOnly: true,
+          copyEnable: false,
+          curXPath
+        }
+      },
       value: {
+        select({data, outputs,connections}, xpath) {
+          if (connections) {
+            const con0 = connections[0]
+            con0.data.xpath = xpath
+          }
+        },
         get({data, outputs}) {
           const returnPin = outputs.get('return')
           return returnPin.schema
-        }, set({data, outputs}, schema) {
+        },
+        set({data, outputs}, schema) {
           const allPins = outputs.get()
           allPins.forEach(pin => {
             outputs.get(pin.id).setSchema(schema)

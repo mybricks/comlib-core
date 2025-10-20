@@ -1,4 +1,4 @@
-export default function ({env, data, outputs, inputs, _notifyBindings}) {
+export default function ({env, data, outputs, inputs, logger, onError, _notifyBindings}) {
   inputs['get']((val, relOutpus) => {
     const nowVal = data.val !== void 0 ? data.val : data.initValue
     const cv = clone(nowVal)
@@ -11,6 +11,37 @@ export default function ({env, data, outputs, inputs, _notifyBindings}) {
     const cVal = clone(val)
     outputs['changed'](cVal, true)//notify all forked coms
     _notifyBindings(cVal)
+
+    relOutpus['return'](cVal)
+  })
+
+  inputs['setTrue']((val, relOutpus) => {
+    data.val = true
+    //const cVal = clone(val)
+    outputs['changed'](true, true)//notify all forked coms
+    //_notifyBindings(cVal)
+
+    relOutpus['return'](true)
+  })
+
+  inputs['setFalse']((val, relOutpus) => {
+    data.val = false
+    outputs['changed'](false, true)//notify all forked coms
+
+    relOutpus['return'](false)
+  })
+
+  inputs['setAryAdd']((val, relOutpus) => {
+    if (!data.val || !Array.isArray(data.val)) {
+      const msg = `${data.initValue} must be an array`
+      onError(msg)
+      return
+    }
+
+    data.val.push(val)
+
+    const cVal = clone(val)
+    outputs['changed'](cVal, true)//notify all forked coms
 
     relOutpus['return'](cVal)
   })
