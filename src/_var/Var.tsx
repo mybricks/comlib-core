@@ -31,7 +31,7 @@ export default function ({env, data, outputs, inputs, logger, onError, _notifyBi
     relOutpus['return'](false)
   })
 
-  inputs['setAryAdd']((val, relOutpus) => {
+  inputs['setAryAdd']((val, relOutpus, { onError }) => {
     if (!data.val || !Array.isArray(data.val)) {
       const msg = `${data.initValue} must be an array`
       onError(msg)
