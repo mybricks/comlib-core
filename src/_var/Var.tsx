@@ -32,15 +32,18 @@ export default function ({env, data, outputs, inputs, logger, onError, _notifyBi
   })
 
   inputs['setAryAdd']((val, relOutpus, { onError }) => {
-    if (!data.val || !Array.isArray(data.val)) {
-      const msg = `${data.initValue} must be an array`
+    const nowVal = "val" in data ? data.val : data.initValue
+
+    if (!Array.isArray(nowVal)) {
+      const msg = `type must be an array`
       onError(msg)
       return
     }
 
-    data.val.push(val)
+    nowVal.push(val)
+    data.val = nowVal
 
-    const cVal = clone(val)
+    const cVal = clone(data.val)
     outputs['changed'](cVal, true)//notify all forked coms
 
     relOutpus['return'](cVal)
