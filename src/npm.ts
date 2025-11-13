@@ -11,6 +11,7 @@ import service0 from "./service/Service"
 import frameOutput0 from "./frame-output/runtime"
 import jsAi0 from "./ai-js/runtime"
 import domain0 from "./_domain/runtime"
+import busGetUser0 from "./_bus-user/runtime"
 
 export default {
   id: 'mybricks-core-comlib',
@@ -33,7 +34,7 @@ export default {
     version: "1.0.0",
     runtime: var0,
     data: {},
-    inputs: ["get","set","reset"],
+    inputs: ["get","set","setTrue","setFalse","setAryAdd"],
     outputs: ["return","changed"]
   },
   {
@@ -74,7 +75,7 @@ export default {
     runtime: Module0,
     data: {},
     inputs: ["show","hide","showOrHide"],
-    outputs: ["click"]
+    outputs: []
   },
   {
     namespace: "mybricks.core-comlib.group",
@@ -98,7 +99,7 @@ export default {
     runtime: frameOutput0,
     data: {},
     inputs: ["output"],
-    outputs: []
+    outputs: ["result"]
   },
   {
     namespace: "mybricks.core-comlib.js-ai",
@@ -112,6 +113,14 @@ export default {
     namespace: "mybricks.core-comlib.domain",
     version: "1.0.0",
     runtime: domain0,
+    data: {},
+    inputs: ["call"],
+    outputs: ["then","catch"]
+  },
+  {
+    namespace: "mybricks.core-comlib.bus-getUser",
+    version: "1.0.0",
+    runtime: busGetUser0,
     data: {},
     inputs: ["call"],
     outputs: ["then","catch"]

@@ -21,7 +21,7 @@ function getComponentName({ namespace, rtType }) {
   }, "");
 }
 
-const componentDirNames = ['fn', '_var', '_type-change', '_connector', 'frame-input', '_scenes', 'module', 'group', 'service', 'frame-output', 'ai-js', '_domain']
+const componentDirNames = ['fn', '_var', '_type-change', '_connector', 'frame-input', '_scenes', 'module', 'group', 'service', 'frame-output', 'ai-js', '_domain', '_bus-user']
 
 let comArayCode = ''
 let importCode = ''
